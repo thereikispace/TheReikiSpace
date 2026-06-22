@@ -2099,21 +2099,50 @@
             }
         }
 
-        /* Short landscape phones — slim the nav and shrink floating buttons
-           so they take up less of the limited vertical space / obscure less text */
+        /* Short landscape phones — slim the nav and tuck the floating buttons
+           into the nav's central whitespace (between brand and menu toggle) */
         @media (orientation: landscape) and (max-height: 500px) {
             nav {
                 padding-top: var(--space-xs);
                 padding-bottom: var(--space-xs);
             }
             .nav-trust-bar { display: none; }
-            .contact-btn {
-                width: 44px;
-                height: 44px;
+
+            /* Move both floating button groups up to the top-centre, always visible */
+            .sticky-contacts,
+            .fresha-button {
+                position: fixed;
+                top: 6px;
+                bottom: auto;
+                opacity: 1;
+                transform: none;
+                z-index: 1600;
             }
-            .contact-btn i { font-size: 1.2rem; }
-            .fresha-btn { padding: var(--space-sm) var(--space-md); }
-            .fresha-btn i { font-size: 1rem; }
+            .sticky-contacts {
+                left: 50%;
+                right: auto;
+                margin-left: 6px;
+                flex-direction: row;
+                gap: var(--space-sm);
+            }
+            .fresha-button {
+                right: 50%;
+                left: auto;
+                margin-right: 6px;
+            }
+            .contact-btn {
+                width: 40px;
+                height: 40px;
+            }
+            .contact-btn i { font-size: 1.1rem; }
+            .fresha-btn {
+                width: 40px;
+                height: 40px;
+                padding: 0;
+                border-radius: 50%;
+            }
+            .fresha-btn span { display: none; }
+            .fresha-btn i { font-size: 1.1rem; }
         }
 
         /* Accessibility - respect user's reduce motion preference */
