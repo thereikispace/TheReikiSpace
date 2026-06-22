@@ -2097,6 +2097,11 @@
             .dist-picker-grid {
                 grid-template-columns: repeat(2, 1fr) !important;
             }
+            /* Halve the gap below the treatment photos so it matches the
+               text-to-Buxton-photo gap that follows */
+            .section-space-photos {
+                padding-bottom: 0;
+            }
         }
 
         /* Short landscape phones — slim the nav and tuck the floating buttons
@@ -2976,7 +2981,7 @@
         <div class="section-break" aria-hidden="true"></div>
 
         <!-- Treatment space photos -->
-        <section class="section">
+        <section class="section section-space-photos">
             <div class="container-narrow">
                 <div class="section-header">
                     <h2>The Space</h2>
