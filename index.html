@@ -2099,6 +2099,23 @@
             }
         }
 
+        /* Short landscape phones — slim the nav and shrink floating buttons
+           so they take up less of the limited vertical space / obscure less text */
+        @media (orientation: landscape) and (max-height: 500px) {
+            nav {
+                padding-top: var(--space-xs);
+                padding-bottom: var(--space-xs);
+            }
+            .nav-trust-bar { display: none; }
+            .contact-btn {
+                width: 44px;
+                height: 44px;
+            }
+            .contact-btn i { font-size: 1.2rem; }
+            .fresha-btn { padding: var(--space-sm) var(--space-md); }
+            .fresha-btn i { font-size: 1rem; }
+        }
+
         /* Accessibility - respect user's reduce motion preference */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
