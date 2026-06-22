@@ -650,6 +650,12 @@
             50% { transform: translateY(-30px) scale(1.05); }
         }
         
+        @media (max-width: 640px) {
+            .hero {
+                justify-content: flex-start;
+            }
+        }
+
         @media (min-width: 900px) {
             .hero::before {
                 width: 600px;
@@ -3385,6 +3391,21 @@
                     nav.classList.remove('scrolled');
                 }
             });
+
+            // Offset the hero below the fixed nav by the nav's actual height (mobile),
+            // so a tall/wrapping trust bar can't clip the heading.
+            const heroSection = document.getElementById('hero');
+            function setHeroOffset() {
+                if (!nav || !heroSection) return;
+                if (window.innerWidth <= 640) {
+                    heroSection.style.paddingTop = (nav.offsetHeight + 24) + 'px';
+                } else {
+                    heroSection.style.paddingTop = '';
+                }
+            }
+            setHeroOffset();
+            window.addEventListener('resize', setHeroOffset);
+            window.addEventListener('orientationchange', setHeroOffset);
             
             // Navigation toggle
             const navToggle = document.querySelector('.nav-toggle');
