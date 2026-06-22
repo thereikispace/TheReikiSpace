@@ -2108,41 +2108,31 @@
             }
             .nav-trust-bar { display: none; }
 
-            /* Move both floating button groups up to the top-centre, always visible */
+            /* Tuck the floating buttons up beside the menu toggle, aligned with the brand */
             .sticky-contacts,
             .fresha-button {
                 position: fixed;
-                top: 6px;
+                top: 8px;
                 bottom: auto;
+                left: auto;
                 opacity: 1;
                 transform: none;
                 z-index: 1600;
             }
             .sticky-contacts {
-                left: 50%;
-                right: auto;
-                margin-left: 6px;
+                right: 84px;
                 flex-direction: row;
                 gap: var(--space-sm);
             }
             .fresha-button {
-                right: 50%;
-                left: auto;
-                margin-right: 6px;
+                top: 1px;
+                right: 188px;
             }
             .contact-btn {
-                width: 40px;
-                height: 40px;
+                width: 44px;
+                height: 44px;
             }
-            .contact-btn i { font-size: 1.1rem; }
-            .fresha-btn {
-                width: 40px;
-                height: 40px;
-                padding: 0;
-                border-radius: 50%;
-            }
-            .fresha-btn span { display: none; }
-            .fresha-btn i { font-size: 1.1rem; }
+            .contact-btn i { font-size: 1.2rem; }
         }
 
         /* Accessibility - respect user's reduce motion preference */
