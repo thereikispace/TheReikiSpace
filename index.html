@@ -2098,6 +2098,14 @@
             .fresha-btn span { display: inline; }
         }
         
+        /* Equalise space above and below "Sessions take place" text on tablet and desktop */
+        @media (min-width: 768px) {
+            .section-buxton .section-header { margin-bottom: var(--space-2xl); }
+        }
+        @media (min-width: 900px) {
+            .section-buxton .section-header { margin-bottom: var(--space-4xl); }
+        }
+
         /* Distance form pickers — 2-col on narrow screens to avoid 93px squeeze */
         @media (max-width: 640px) {
             .dist-picker-grid {
@@ -2993,14 +3001,14 @@
                     <h2>The Space</h2>
                 </div>
                 <div class="photo-strip-inner">
-                    <img src="space-1.jpg" alt="The treatment space" class="strip-photo" loading="lazy" style="max-width:100%; display:block;">
+                    <img src="space-1.jpg" alt="The treatment space" class="strip-photo" loading="lazy" style="max-width:100%; display:block; object-position:center bottom;">
                     <img src="space-2.jpg" alt="Treatment room detail" class="strip-photo" loading="lazy" style="max-width:100%; display:block;">
                 </div>
             </div>
         </section>
 
         <!-- Buxton photo -->
-        <section class="section">
+        <section class="section section-buxton">
             <div class="container-narrow">
                 <div class="section-header">
                     <p>Sessions take place in the heart of Buxton, Derbyshire, welcoming clients from across the Peak District and beyond</p>
