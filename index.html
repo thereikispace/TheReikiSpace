@@ -2098,6 +2098,10 @@
             .fresha-btn span { display: inline; }
         }
         
+        /* Remove bottom padding from treatment photos section at all sizes so the
+           combined gap above 'Sessions take place' matches the gap below it */
+        .section-space-photos { padding-bottom: 0; }
+
         /* Equalise space above and below "Sessions take place" text on tablet and desktop */
         @media (min-width: 768px) {
             .section-buxton .section-header { margin-bottom: var(--space-2xl); }
@@ -2111,8 +2115,8 @@
             .dist-picker-grid {
                 grid-template-columns: repeat(2, 1fr) !important;
             }
-            /* Halve the gap below the treatment photos so it matches the
-               text-to-Buxton-photo gap that follows */
+            /* Remove bottom padding below treatment photos so the gap above
+               the 'Sessions take place' text matches the gap below it */
             .section-space-photos {
                 padding-bottom: 0;
             }
