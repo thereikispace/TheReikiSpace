@@ -6,5 +6,8 @@ ehthumbs.db
 # macOS
 .DS_Store
 
+# Node / dev tooling
+node_modules/
+
 # Local Claude Code / dev tooling
 .claude/
