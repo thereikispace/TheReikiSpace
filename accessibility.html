@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Accessibility statement for The Reiki Space - Thomas Martin, Reiki practitioner in Buxton, Derbyshire.">
+    <meta name="theme-color" content="#F8F6F0">
+    <title>Accessibility | The Reiki Space</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%234A1942'/><g opacity='0.95'><path d='M50 12 Q62 30 50 50 Q38 30 50 12' fill='%23C1A460'/><path d='M50 12 Q62 30 50 50 Q38 30 50 12' fill='%23C1A460' transform='rotate(30,50,50)'/><path d='M50 12 Q62 30 50 50 Q38 30 50 12' fill='%23C1A460' transform='rotate(60,50,50)'/><path d='M50 12 Q62 30 50 50 Q38 30 50 12' fill='%23C1A460' transform='rotate(90,50,50)'/><path d='M50 12 Q62 30 50 50 Q38 30 50 12' fill='%23C1A460' transform='rotate(120,50,50)'/><path d='M50 12 Q62 30 50 50 Q38 30 50 12' fill='%23C1A460' transform='rotate(150,50,50)'/><path d='M50 12 Q62 30 50 50 Q38 30 50 12' fill='%23C1A460' transform='rotate(180,50,50)'/><path d='M50 12 Q62 30 50 50 Q38 30 50 12' fill='%23C1A460' transform='rotate(210,50,50)'/><path d='M50 12 Q62 30 50 50 Q38 30 50 12' fill='%23C1A460' transform='rotate(240,50,50)'/><path d='M50 12 Q62 30 50 50 Q38 30 50 12' fill='%23C1A460' transform='rotate(270,50,50)'/><path d='M50 12 Q62 30 50 50 Q38 30 50 12' fill='%23C1A460' transform='rotate(300,50,50)'/><path d='M50 12 Q62 30 50 50 Q38 30 50 12' fill='%23C1A460' transform='rotate(330,50,50)'/></g><circle cx='50' cy='50' r='16' fill='none' stroke='%23C1A460' stroke-width='1' opacity='0.5'/><circle cx='50' cy='50' r='7' fill='%23C1A460'/><circle cx='50' cy='50' r='3' fill='%234A1942'/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600&family=Cinzel:wght@400;500;600&family=Montserrat:wght@200;300;400&display=swap">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --deep-brown: #2C1810;
+            --gold: #B8965F;
+            --light-gold: #D4BC7B;
+            --warm-terracotta: #C17B5C;
+            --cream: #F8F6F0;
+            --warm-taupe: #E8DDD1;
+            --text-on-cream: #000000;
+            --link-colour: #7A5D3A;
+            --link-hover: #5A3D1A;
+            --space-sm: 0.75rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            --space-3xl: 4rem;
+            --border-radius: 10px;
+            --shadow-sm: 0 1px 3px rgba(44,24,16,0.12);
+            --max-width-narrow: 700px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Cormorant', Georgia, serif;
+            line-height: 1.6;
+            color: var(--text-on-cream);
+            background: linear-gradient(to bottom, #EAE0D4, #E8DDD1, #E5D8CC);
+            background-attachment: fixed;
+            font-size: clamp(1.1875rem, 2.5vw, 1.125rem);
+            letter-spacing: 0.02em;
+        }
+
+        nav {
+            background: rgba(248,246,240,0.97);
+            backdrop-filter: blur(20px);
+            padding: var(--space-md) var(--space-lg);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(184,150,95,0.1);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1rem, 4vw, 1.4rem);
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--light-gold) 50%, var(--warm-terracotta) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-back {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--link-colour);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-back:hover { color: var(--warm-terracotta); }
+
+        .page-header {
+            padding: calc(80px + 4rem) var(--space-lg) var(--space-3xl);
+            text-align: center;
+            background: linear-gradient(135deg, rgba(44,24,16,0.06), rgba(193,123,92,0.04));
+            border-bottom: 1px solid rgba(184,150,95,0.15);
+        }
+
+        .page-header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.25rem, 6vw, 3.5rem);
+            background: linear-gradient(135deg, var(--gold), var(--light-gold), var(--warm-terracotta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-md);
+            position: relative;
+            padding-bottom: var(--space-lg);
+        }
+
+        .page-header h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .page-header p {
+            color: #5A5A5A;
+            font-size: 0.9rem;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.05em;
+            margin-top: var(--space-lg);
+        }
+
+        .content {
+            max-width: var(--max-width-narrow);
+            margin: 0 auto;
+            padding: var(--space-3xl) var(--space-lg);
+        }
+
+        .policy-section {
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-lg);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(184,150,95,0.15);
+        }
+
+        .policy-section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.25rem, 3vw, 1.5rem);
+            color: var(--warm-terracotta);
+            font-weight: 400;
+            letter-spacing: 0.06em;
+            margin-bottom: var(--space-md);
+            padding-bottom: var(--space-sm);
+            border-bottom: 1px solid rgba(184,150,95,0.2);
+        }
+
+        .policy-section p {
+            margin-bottom: var(--space-md);
+            line-height: 1.8;
+        }
+
+        .policy-section p:last-child { margin-bottom: 0; }
+
+        .policy-section ul {
+            margin: 0 0 var(--space-md) var(--space-lg);
+            line-height: 1.8;
+        }
+        .policy-section li { margin-bottom: var(--space-sm); }
+
+        a { color: var(--warm-terracotta); text-decoration: underline; text-underline-offset: 3px; }
+        a:hover { color: var(--link-hover); }
+
+        .important-notice {
+            background: linear-gradient(135deg, rgba(184,150,95,0.1), rgba(193,123,92,0.06));
+            border-left: 4px solid var(--gold);
+            border-radius: var(--border-radius);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-lg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .important-notice p {
+            margin-bottom: var(--space-md);
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .important-notice p:last-child { margin-bottom: 0; }
+
+        .contact-block {
+            background: linear-gradient(135deg, rgba(184,150,95,0.08), rgba(193,123,92,0.05));
+            border-left: 3px solid var(--gold);
+            border-radius: var(--border-radius);
+            padding: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+
+        .contact-block p { margin-bottom: var(--space-sm); }
+        .contact-block p:last-child { margin-bottom: 0; }
+
+        footer {
+            background: linear-gradient(to bottom, rgba(240,235,227,0.95), rgba(232,221,209,0.95));
+            padding: var(--space-2xl) var(--space-lg);
+            border-top: 2px solid rgba(184,150,95,0.2);
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.85rem;
+            color: #5A5A5A;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.04em;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-xl);
+            list-style: none;
+            margin: var(--space-lg) 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--link-colour);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .footer-links a:hover { color: var(--warm-terracotta); }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">The Reiki Space</a>
+            <a href="index.html" class="nav-back"><i class="fas fa-arrow-left"></i> Back to site</a>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>Accessibility</h1>
+        <p>Making The Reiki Space welcoming and comfortable for everyone.</p>
+    </div>
+
+    <div class="content">
+
+        <div class="important-notice">
+            <p>Everyone is welcome at The Reiki Space. If there is anything that would make your visit or your session easier or more comfortable, please tell me before you book and I will do my best to accommodate you.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>Our Commitment</h2>
+            <p>I want every client to feel safe, respected, and at ease — regardless of age, ability, background, or health. Reiki is a gentle, non-invasive practice, and sessions can be adapted in many ways to suit your individual needs.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>Adapting Your Session</h2>
+            <p>Sessions are flexible and can be tailored to you. For example:</p>
+            <ul>
+                <li>Reiki can be given hands-on or entirely hands-off, according to your comfort.</li>
+                <li>You remain fully clothed throughout, and can lie down or remain seated.</li>
+                <li>Lighting, music, and room temperature can be adjusted to suit sensory preferences.</li>
+                <li>If you have mobility needs, chronic pain, or find lying flat difficult, let me know and we will find a comfortable position together.</li>
+                <li>You are welcome to bring a friend, carer, or companion to your appointment.</li>
+            </ul>
+            <p>If you have specific requirements, please mention them when booking so I can prepare in advance.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>Visiting the Treatment Space</h2>
+            <p>If you would like to know about access to the treatment space in Buxton before booking — including parking, steps, or any other practical considerations — please get in touch and I will happily talk you through it.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>Distance Sessions</h2>
+            <p>If travelling to Buxton is difficult for any reason, distance Reiki sessions are available from the comfort of your own home, conducted via WhatsApp (video or voice call), Google Meet, Microsoft Teams, or phone. Many clients find these just as supportive as in-person sessions.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>Website Accessibility</h2>
+            <p>This website has been built with accessibility in mind, including readable fonts, clear colour contrast, text that scales when you zoom, descriptive image text, and keyboard-friendly navigation. I am continually working to improve the experience and welcome any feedback.</p>
+        </div>
+
+        <div class="contact-block">
+            <p><strong>Tell me what you need</strong></p>
+            <p>If you have an access requirement, or if you experience any difficulty using this website, please contact Thomas at <a href="mailto:thereikispacebuxton@gmail.com">thereikispacebuxton@gmail.com</a> or 07588 295 780. Your feedback helps me make The Reiki Space better for everyone.</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <ul class="footer-links">
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="disclaimer.html">Disclaimer</a></li>
+            <li><a href="accessibility.html">Accessibility</a></li>
+            <li><a href="index.html">Return to Site</a></li>
+        </ul>
+        <p>&copy; 2026 The Reiki Space · Thomas Martin · UK Reiki Federation Member</p>
+    </footer>
+
+</body>
+</html>
