@@ -2110,10 +2110,10 @@
             .section-buxton .section-header { margin-bottom: var(--space-4xl); }
         }
 
-        /* Distance form pickers — 2-col on narrow screens to avoid 93px squeeze */
+        /* Distance form pickers — single column on portrait phones for readability */
         @media (max-width: 640px) {
             .dist-picker-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
+                grid-template-columns: repeat(1, 1fr) !important;
             }
             /* Remove bottom padding below treatment photos so the gap above
                the 'Sessions take place' text matches the gap below it */
@@ -3992,7 +3992,8 @@
     function toggleDistDateInput(checkbox) {
         var dateInput = document.getElementById('dist_date');
         if (!dateInput) return;
-        var schedulingFields = ['distDateFields','distDayFields','distTzFields','distTimeFields'];
+        var schedulingFields = ['distDateFields','distDayFields','distTzFields'];
+        // distTimeFields intentionally excluded — time of day remains selectable when flexible
         if (checkbox.checked) {
             dateInput.disabled = true;
             dateInput.value = '';
