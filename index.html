@@ -2111,6 +2111,11 @@
         }
 
         /* Distance form pickers — single column on portrait phones for readability */
+        /* background-attachment:fixed is ignored/broken on mobile — use scroll instead */
+        @media (max-width: 900px) {
+            body { background-attachment: scroll; }
+        }
+
         @media (max-width: 640px) {
             .dist-picker-grid {
                 grid-template-columns: repeat(1, 1fr) !important;
