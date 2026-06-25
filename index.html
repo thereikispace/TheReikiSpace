@@ -2961,7 +2961,7 @@
                     <p style="font-size: var(--font-size-xs, 0.8rem); color: #6B5B4E; line-height: 1.6; margin-top: var(--space-md); opacity: 0.85;">Valid for eight months from the date of purchase.</p>
                 </div>
                 
-                <p style="text-align: center; font-family: 'Montserrat', sans-serif; font-size: var(--font-size-sm); color: var(--warm-terracotta); margin-top: calc(var(--space-md) * -0.5); margin-bottom: var(--space-lg); letter-spacing: 0.04em;">Individual in-person sessions can be reserved instantly using the gold <em>Book Now</em> button at the bottom left of your screen.</p>
+                <p id="bookNowHint1" style="text-align: center; font-family: 'Montserrat', sans-serif; font-size: var(--font-size-sm); color: var(--warm-terracotta); margin-top: calc(var(--space-md) * -0.5); margin-bottom: var(--space-lg); letter-spacing: 0.04em;">Individual in-person sessions can be reserved instantly using the gold <em>Book Now</em> button at the bottom left of your screen.</p>
                 <div class="trust-signal" style="margin-top: 0; margin-bottom: var(--space-lg);">
                     <p>You don't need to be going through something difficult to benefit from Reiki. Many clients come simply for deep relaxation, a reset, or regular time set aside for their own wellbeing. You may find yourself sleeping more deeply, feeling less reactive to stress, and moving through daily life with greater ease, often noticeable after a single session. For those seeking a more sustained shift, a series of sessions tends to help most.</p>
                 </div>
@@ -3300,7 +3300,7 @@
                             <p style="font-family: 'Montserrat', sans-serif; font-size: var(--font-size-sm); color: var(--deep-brown); margin: 0;">Distance sessions have a dedicated booking form — <a href="#distance" style="color: var(--warm-terracotta);">scroll up to use it</a>, or continue below to send a personal enquiry instead.</p>
                         </div>
                         <div id="freshaInPersonNote" style="display:none; margin-top: var(--space-md); padding: var(--space-md); background: rgba(184,150,95,0.08); border-left: 3px solid var(--gold); border-radius: var(--border-radius);">
-                            <p style="font-family: 'Montserrat', sans-serif; font-size: var(--font-size-sm); color: var(--deep-brown); margin: 0;">For in-person sessions, the quickest route is the <strong>gold Book Now button</strong> at the bottom left of your screen — instant confirmation, live availability. Or continue below to send a personal enquiry.</p>
+                            <p id="bookNowHint2" style="font-family: 'Montserrat', sans-serif; font-size: var(--font-size-sm); color: var(--deep-brown); margin: 0;">For in-person sessions, the quickest route is the <strong>gold Book Now button</strong> at the bottom left of your screen — instant confirmation, live availability. Or continue below to send a personal enquiry.</p>
                         </div>
                     </div>
 
@@ -3476,6 +3476,24 @@
             setHeroOffset();
             window.addEventListener('resize', setHeroOffset);
             window.addEventListener('orientationchange', setHeroOffset);
+
+            // Update Book Now position hint based on orientation
+            function updateBookNowHint() {
+                var landscape = window.innerWidth > window.innerHeight && window.innerWidth <= 900;
+                var h1 = document.getElementById('bookNowHint1');
+                var h2 = document.getElementById('bookNowHint2');
+                if (h1) h1.innerHTML = h1.innerHTML.replace(
+                    landscape ? 'at the bottom left of your screen' : 'at the top of your screen',
+                    landscape ? 'at the top of your screen' : 'at the bottom left of your screen'
+                );
+                if (h2) h2.innerHTML = h2.innerHTML.replace(
+                    landscape ? 'at the bottom left of your screen' : 'at the top of your screen',
+                    landscape ? 'at the top of your screen' : 'at the bottom left of your screen'
+                );
+            }
+            updateBookNowHint();
+            window.addEventListener('resize', updateBookNowHint);
+            window.addEventListener('orientationchange', updateBookNowHint);
             
             // Navigation toggle
             const navToggle = document.querySelector('.nav-toggle');
