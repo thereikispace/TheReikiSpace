@@ -1791,6 +1791,39 @@
             margin: 0 auto;
             text-align: center;
         }
+
+        /* Two-column footer on desktop */
+        .footer-main {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xl);
+            text-align: left;
+        }
+
+        @media (min-width: 700px) {
+            .footer-main {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+                gap: var(--space-2xl);
+            }
+            .footer-col-left { flex: 1; }
+            .footer-col-right {
+                flex-shrink: 0;
+                text-align: right;
+            }
+        }
+
+        .footer-strip {
+            margin-top: var(--space-xl);
+            padding-top: var(--space-lg);
+            border-top: 1px solid rgba(184,150,95,0.18);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-sm);
+            text-align: center;
+        }
         
         .footer-content h3 {
             font-family: 'Cinzel', serif;
@@ -3373,24 +3406,33 @@
     
     <footer>
         <div class="footer-content">
-            <h3>The Reiki Space</h3>
-            <p style="font-family:'Montserrat',sans-serif; font-size:var(--font-size-sm); letter-spacing:0.08em; color:#6B5B4E; margin-bottom:var(--space-lg);">Thomas Martin · Usui Reiki Practitioner · Buxton, Derbyshire</p>
-            <p>Email: <a href="mailto:thereikispacebuxton@gmail.com">thereikispacebuxton@gmail.com</a></p>
-            <p>Phone: <a href="tel:07588295780">07588 295 780</a></p>
-            <address style="font-style:normal;"><p>22 Hardwick Street, Buxton, Derbyshire, SK17 6DH</p></address>
-            <p style="font-size:var(--font-size-sm); color:#6B5B4E; margin-top:var(--space-xs);">Distance sessions available UK-wide and worldwide via WhatsApp (video or voice call), Google Meet, Microsoft Teams or phone.</p>
-            <ul class="footer-links">
-                <li><a href="privacy.html">Privacy Policy</a></li>
-                <li><a href="disclaimer.html">Disclaimer</a></li>
-                <li><a href="accessibility.html">Accessibility</a></li>
-            </ul>
-            <div class="social-links">
-                <a href="https://www.facebook.com/TheReikiSpace1" target="_blank" rel="noopener" aria-label="The Reiki Space on Facebook"><i class="fab fa-facebook"></i></a>
+            <div class="footer-main">
+                <!-- Left: contact -->
+                <div class="footer-col-left">
+                    <h3>The Reiki Space</h3>
+                    <p style="font-family:'Montserrat',sans-serif; font-size:var(--font-size-sm); letter-spacing:0.08em; color:#6B5B4E; margin-bottom:var(--space-lg);">Thomas Martin · Usui Reiki Practitioner · Buxton, Derbyshire</p>
+                    <p>Email: <a href="mailto:thereikispacebuxton@gmail.com">thereikispacebuxton@gmail.com</a></p>
+                    <p>Phone: <a href="tel:07588295780">07588 295 780</a></p>
+                    <address style="font-style:normal;"><p>22 Hardwick Street, Buxton, Derbyshire, SK17 6DH</p></address>
+                    <p style="font-size:var(--font-size-sm); color:#6B5B4E; margin-top:var(--space-xs);">Distance sessions available UK-wide and worldwide via WhatsApp (video or voice call), Google Meet, Microsoft Teams or phone.</p>
+                </div>
+                <!-- Right: links + social -->
+                <div class="footer-col-right">
+                    <ul class="footer-links" style="justify-content:flex-end; margin-top:0;">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                        <li><a href="accessibility.html">Accessibility</a></li>
+                    </ul>
+                    <div class="social-links" style="margin-top:var(--space-md); text-align:right;">
+                        <a href="https://www.facebook.com/TheReikiSpace1" target="_blank" rel="noopener" aria-label="The Reiki Space on Facebook"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
             </div>
-            <div style="margin-top:var(--space-xl); border-top:1px solid rgba(184,150,95,0.15); padding-top:var(--space-lg); display:flex; flex-direction:column; align-items:center; gap:var(--space-sm);">
-                <img src="ukrf-logo.png" alt="UK Reiki Federation Member" style="height:45px; width:auto; opacity:0.7; mix-blend-mode:multiply;">
-                <p style="font-size:var(--font-size-sm); color:#6B5B4E; margin:0; text-align:center;">&copy; 2026 The Reiki Space · Thomas Martin · All rights reserved.</p>
-                <p style="font-size:0.75rem; color:#8A7A6E; margin:0; text-align:center;">Your personal data is handled in accordance with the UK GDPR and the Data Protection Act 2018. We will never share your information with third parties without your consent.</p>
+            <!-- Bottom strip: logo + copyright + data protection -->
+            <div class="footer-strip">
+                <img src="ukrf-logo.png" alt="UK Reiki Federation Member" style="height:45px; width:auto; opacity:0.7;">
+                <p style="font-size:var(--font-size-sm); color:#6B5B4E; margin:0;">&copy; 2026 The Reiki Space · Thomas Martin · All rights reserved.</p>
+                <p style="font-size:0.75rem; color:#8A7A6E; margin:0;">Personal data handled in accordance with the UK GDPR &amp; Data Protection Act 2018. We never share your information with third parties.</p>
             </div>
         </div>
     </footer>
