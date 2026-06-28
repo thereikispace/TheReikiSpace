@@ -678,14 +678,13 @@
         }
         
         .mandala-container {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2;
-            max-width: min(300px, 70vw);
-            opacity: 0.60;
-            animation: none;
+            display: none;
+        }
+
+        @media (min-width: 641px) {
+            .mandala-container {
+                display: flex;
+            }
         }
         
         @media (min-width: 641px) {
