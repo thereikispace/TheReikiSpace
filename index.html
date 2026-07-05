@@ -573,7 +573,14 @@
         .nav-links a:active {
             background: rgba(184,150,95,0.1);
         }
-        
+
+        /* Gift Vouchers nav link — gold to stand out */
+        .nav-gift a {
+            color: var(--gold);
+            font-weight: 500;
+        }
+        .nav-gift a:hover { color: var(--warm-terracotta); }
+
         @media (min-width: 900px) {
             .nav-toggle { display: none; }
             .nav-links {
@@ -2490,6 +2497,7 @@
                 <li><a href="#sessions">Sessions</a></li>
                 <li><a href="#distance">Distance Sessions</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
+                <li class="nav-gift"><a href="gift-vouchers.html">Gift Vouchers</a></li>
                 <li class="nav-book-link"><a href="#book">Book</a></li>
             </ul>
             <a href="#book" class="nav-book-btn" aria-label="Book a session with Thomas">Book a Session</a>
@@ -3396,6 +3404,7 @@
                 <div class="trust-signal mt-xl">
                     <p><strong>Data Protection:</strong> Your personal information will only be used to respond to your enquiry. Your details will not be shared with third parties.</p>
                 </div>
+                <p style="text-align:center; margin-top:var(--space-xl); font-family:'Cormorant',serif; font-size:var(--font-size-lg); line-height:1.7; color:var(--text-on-cream);">Looking for a gift? Treat someone to the gift of rest with a <a href="gift-vouchers.html" style="color:var(--gold); font-weight:500; text-decoration:none; border-bottom:1px solid rgba(184,150,95,0.4);">Reiki gift voucher</a>.</p>
             </div>
         </section>
         
