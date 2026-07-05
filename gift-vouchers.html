@@ -1594,7 +1594,40 @@
             margin: 0 auto;
             text-align: center;
         }
-        
+
+        /* Two-column footer on desktop */
+        .footer-main {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xl);
+            text-align: left;
+        }
+
+        @media (min-width: 700px) {
+            .footer-main {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+                gap: var(--space-2xl);
+            }
+            .footer-col-left { flex: 1; }
+            .footer-col-right {
+                flex-shrink: 0;
+                text-align: right;
+            }
+        }
+
+        .footer-strip {
+            margin-top: var(--space-xl);
+            padding-top: var(--space-lg);
+            border-top: 1px solid rgba(184,150,95,0.18);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-sm);
+            text-align: center;
+        }
+
         .footer-content h3 {
             font-family: 'Cinzel', serif;
             background: linear-gradient(135deg, var(--gold), var(--light-gold), var(--warm-terracotta));
@@ -1954,7 +1987,8 @@
     <style>
         /* ===== GIFT VOUCHER PAGE — uses the site's design tokens ===== */
         .voucher-hero { text-align: center; padding: calc(120px + var(--space-2xl)) var(--space-lg) var(--space-2xl); max-width: var(--max-width-narrow); margin: 0 auto; }
-        @media (max-width: 700px) { .voucher-hero { padding-top: calc(150px + var(--space-lg)); } }
+        @media (max-width: 700px) { .voucher-hero { padding-top: calc(200px + var(--space-lg)); } }
+        @media (max-width: 380px) { .voucher-hero { padding-top: calc(230px + var(--space-lg)); } }
         .voucher-hero .voucher-icon {
             width: 84px; height: 84px; margin: 0 auto var(--space-lg); border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
@@ -1968,6 +2002,7 @@
         .voucher-how h2 { font-family: 'Cinzel', serif; font-weight: 500; font-size: var(--font-size-xl); color: var(--deep-brown); text-align: center; margin-bottom: var(--space-lg); }
         .voucher-steps { list-style: none; counter-reset: step; display: grid; gap: var(--space-md); margin: 0; padding: 0; }
         .voucher-steps > li { counter-increment: step; display: flex; gap: var(--space-md); align-items: flex-start; font-family: 'Cormorant', serif; font-size: var(--font-size-lg); line-height: 1.65; color: var(--text-on-cream); }
+        .voucher-step-body { flex: 1; }
         .voucher-steps > li::before { content: counter(step); flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--voucher-accent, var(--gold)); color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
         .voucher-substeps { list-style: none; margin: var(--space-sm) 0 0; padding: 0; display: grid; gap: var(--space-xs); }
         .voucher-substeps li { position: relative; padding-left: 1.3em; font-size: var(--font-size-base); line-height: 1.55; color: var(--text-on-cream); }
@@ -2047,13 +2082,15 @@
                 <h2>How it works</h2>
                 <ol class="voucher-steps">
                     <li>Choose a session length below and pay securely online.</li>
-                    <li>At checkout, please include in the note field:
-                        <ul class="voucher-substeps">
-                            <li>Your name and email address</li>
-                            <li>The recipient&rsquo;s name</li>
-                            <li>The recipient&rsquo;s email address, if you&rsquo;d like me to send the voucher directly to them</li>
-                            <li>Any short gift message you&rsquo;d like included</li>
-                        </ul>
+                    <li>
+                        <div class="voucher-step-body">At checkout, please include in the note field:
+                            <ul class="voucher-substeps">
+                                <li>Your name and email address</li>
+                                <li>The recipient&rsquo;s name</li>
+                                <li>The recipient&rsquo;s email address, if you&rsquo;d like me to send the voucher directly to them</li>
+                                <li>Any short gift message you&rsquo;d like included</li>
+                            </ul>
+                        </div>
                     </li>
                     <li>Within 24 hours, I&rsquo;ll email a personalised gift voucher with a unique code &mdash; to you, or directly to your recipient.</li>
                     <li>The recipient brings that code along when they book, and their session is theirs to enjoy.</li>
@@ -2081,6 +2118,10 @@
                 </div>
             </div>
 
+            <div class="voucher-footnote" style="padding-top:0;">
+                <p>Single-session vouchers are valid for <strong>three months</strong>, and the Course of Six for <strong>twelve months</strong>, both from the date of purchase. Vouchers are non-refundable and non-transferable. To arrange a session, your recipient is welcome to <a href="index.html#book">get in touch</a> to book.</p>
+            </div>
+
             <div class="voucher-course">
                 <h2>Gift a Course of Six</h2>
                 <div class="course-price">&pound;330</div>
@@ -2090,8 +2131,7 @@
             </div>
 
             <div class="voucher-footnote">
-                <p>Single-session vouchers are valid for <strong>three months</strong>, and the Course of Six for <strong>twelve months</strong>, both from the date of purchase. Vouchers are non-refundable and non-transferable. To arrange a session, your recipient is welcome to <a href="index.html#book">get in touch</a> to book.</p>
-                <p style="margin-top: var(--space-md);">Questions? Email <a href="mailto:thereikispacebuxton@gmail.com">thereikispacebuxton@gmail.com</a>, call <a href="tel:07588295780">07588&nbsp;295&nbsp;780</a>, or message on WhatsApp <a href="https://wa.me/447493116637" target="_blank" rel="noopener">07493&nbsp;116637</a>.</p>
+                <p>Questions? Email <a href="mailto:thereikispacebuxton@gmail.com">thereikispacebuxton@gmail.com</a>, call <a href="tel:07588295780">07588&nbsp;295&nbsp;780</a>, or message on WhatsApp <a href="https://wa.me/447493116637" target="_blank" rel="noopener">07493&nbsp;116637</a>.</p>
             </div>
         </section>
     </main>
@@ -2101,23 +2141,34 @@
     </div>
     <footer>
         <div class="footer-content">
-            <h3>The Reiki Space</h3>
-            <p style="font-family: 'Montserrat', sans-serif; font-size: var(--font-size-sm); letter-spacing: 0.08em; color: #6B5B4E; margin-bottom: var(--space-lg);">Thomas Martin · Usui Reiki Practitioner · Buxton, Derbyshire</p>
-            <p>Email: <a href="mailto:thereikispacebuxton@gmail.com">thereikispacebuxton@gmail.com</a></p>
-            <p>Phone: <a href="tel:07588295780">07588 295 780</a> · WhatsApp: <a href="https://wa.me/447493116637" target="_blank" rel="noopener">07493 116637</a></p>
-            <address style="font-style: normal;"><p>22 Hardwick Street, First Floor, Buxton, Derbyshire, SK17 6DH</p></address>
-            <p style="font-size: var(--font-size-sm); color: #6B5B4E; margin-top: var(--space-xs);">Distance sessions available UK-wide and worldwide via WhatsApp (video or voice call), Google Meet, Microsoft Teams or phone.</p>
-            <ul class="footer-links">
-                <li><a href="index.html#privacy">Privacy Policy</a></li>
-                <li><a href="index.html#disclaimer">Disclaimer</a></li>
-                <li><a href="index.html#accessibility">Accessibility</a></li>
-            </ul>
-            <div class="social-links">
-                <a href="https://www.facebook.com/TheReikiSpace1" target="_blank" rel="noopener" aria-label="The Reiki Space on Facebook"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07Z"/></svg></a>
+            <div class="footer-main">
+                <!-- Left: contact -->
+                <div class="footer-col-left">
+                    <h3>The Reiki Space</h3>
+                    <p style="font-family:'Montserrat',sans-serif; font-size:var(--font-size-sm); letter-spacing:0.08em; color:#6B5B4E; margin-bottom:var(--space-lg);">Thomas Martin · Usui Reiki Practitioner · Buxton, Derbyshire</p>
+                    <p>Email: <a href="mailto:thereikispacebuxton@gmail.com">thereikispacebuxton@gmail.com</a></p>
+                    <p>Phone: <a href="tel:07588295780">07588 295 780</a></p>
+                    <address style="font-style:normal;"><p>22 Hardwick Street, Buxton, Derbyshire, SK17 6DH</p></address>
+                    <p style="font-size:var(--font-size-sm); color:#6B5B4E; margin-top:var(--space-xs);">Distance sessions available UK-wide and worldwide via WhatsApp (video or voice call), Google Meet, Microsoft Teams or phone.</p>
+                </div>
+                <!-- Right: links + social -->
+                <div class="footer-col-right">
+                    <ul class="footer-links" style="justify-content:flex-start; margin-top:0;">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                        <li><a href="accessibility.html">Accessibility</a></li>
+                    </ul>
+                    <div class="social-links" style="margin-top:var(--space-md); text-align:right;">
+                        <a href="https://www.facebook.com/TheReikiSpace1" target="_blank" rel="noopener" aria-label="The Reiki Space on Facebook"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07Z"/></svg></a>
+                    </div>
+                </div>
             </div>
-            <p style="margin-top: var(--space-lg); font-size: var(--font-size-sm); color: #6B5B4E;">
-                &copy; 2026 The Reiki Space · Thomas Martin · UK Reiki Federation Member
-            </p>
+            <!-- Bottom strip: logo + copyright + data protection -->
+            <div class="footer-strip">
+                <img src="ukrf-logo.png" alt="UK Reiki Federation Member" style="height:75px; width:auto;">
+                <p style="font-size:var(--font-size-sm); color:#6B5B4E; margin:0;">&copy; 2026 The Reiki Space · Thomas Martin · All rights reserved.</p>
+                <p style="font-size:0.75rem; color:#8A7A6E; margin:0;">Personal data handled in accordance with the UK GDPR &amp; Data Protection Act 2018. We never share your information with third parties.</p>
+            </div>
         </div>
     </footer>
     <script>
