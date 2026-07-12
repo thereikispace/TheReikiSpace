@@ -118,6 +118,22 @@
     }
     </script>
 
+    <!-- Person (practitioner) structured data — E-E-A-T -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Thomas Martin",
+      "jobTitle": "Usui Reiki Practitioner",
+      "image": "https://www.thereikispace.net/thomas-1.jpg",
+      "url": "https://www.thereikispace.net/distance-reiki.html",
+      "worksFor": { "@type": "Organization", "name": "The Reiki Space", "url": "https://www.thereikispace.net/" },
+      "memberOf": { "@type": "Organization", "name": "UK Reiki Federation", "url": "https://www.reikifed.co.uk/" },
+      "knowsAbout": ["Reiki", "Distance Reiki", "Remote Reiki", "Usui Reiki", "Energy healing", "Relaxation", "Wellbeing"],
+      "areaServed": ["United Kingdom", "Worldwide"]
+    }
+    </script>
+
     <style>
         /* MOBILE-FIRST OPTIMIZED REIKI WEBSITE
            Progressive enhancement for all devices
@@ -2131,6 +2147,19 @@
         .dr-cta .dr-contact a { color: var(--warm-terracotta); text-decoration: none; border-bottom: 1px solid rgba(193,123,92,0.4); }
         /* Brief medical-safety note */
         .dr-safety { max-width: var(--max-width-narrow); margin: var(--space-2xl) auto 0; padding-top: var(--space-lg); border-top: 1px solid rgba(184,150,95,0.18); font-family: 'Montserrat', sans-serif; font-size: var(--font-size-xs); line-height: 1.7; color: #8A7A6E; text-align: center; }
+        /* Practitioner / E-E-A-T block */
+        .dr-practitioner { display: flex; gap: var(--space-xl); align-items: flex-start; background: rgba(255,252,245,0.75); border: 1px solid rgba(184,150,95,0.25); border-left: 3px solid var(--gold); border-radius: var(--border-radius); padding: var(--space-xl); margin: var(--space-lg) 0 var(--space-2xl); box-shadow: var(--shadow-sm); }
+        @media (max-width: 640px) { .dr-practitioner { flex-direction: column; align-items: center; text-align: center; } }
+        .dr-practitioner > img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; object-position: center top; border: 3px solid var(--gold); flex-shrink: 0; box-shadow: var(--shadow-md); }
+        .dr-prac-name { font-family: 'Cinzel', serif; font-size: var(--font-size-lg); color: var(--deep-brown); margin-bottom: 0.2rem; letter-spacing: 0.04em; }
+        .dr-prac-title { font-family: 'Montserrat', sans-serif; font-size: var(--font-size-xs); letter-spacing: 0.12em; text-transform: uppercase; color: var(--warm-terracotta); margin-bottom: var(--space-md); }
+        .dr-practitioner p:not(.dr-prac-name):not(.dr-prac-title):not(.dr-prac-links) { line-height: 1.75; margin-bottom: var(--space-md); }
+        .dr-prac-creds { list-style: none; margin: 0 0 var(--space-md); padding: 0; display: grid; gap: 0.45rem; text-align: left; }
+        .dr-prac-creds li { position: relative; padding-left: 1.5em; font-size: var(--font-size-sm); line-height: 1.6; color: #5A4A3E; }
+        .dr-prac-creds li::before { content: "\2713"; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+        .dr-prac-creds a { color: var(--warm-terracotta); text-decoration: none; border-bottom: 1px solid rgba(193,123,92,0.4); }
+        .dr-prac-links { font-size: var(--font-size-sm); margin: 0; }
+        .dr-prac-links a { color: var(--warm-terracotta); text-decoration: none; border-bottom: 1px solid rgba(193,123,92,0.4); }
         .nav-links a[aria-current="page"] { color: var(--gold); }
     </style>
 </head>
@@ -2214,6 +2243,23 @@
                 <h2>Is distance Reiki right for me?</h2>
                 <p>Distance Reiki can be a practical option for almost anyone. Clients come to distance Reiki for many reasons, commonly to unwind from ongoing stress, to ease anxiety, or to support more restful sleep.</p>
                 <p>A remote session can be particularly welcome for anyone who is housebound or finds travel difficult. If someone you care about would like to experience Reiki but cannot easily get to a treatment room, a session can come to them instead.</p>
+
+                <h2>About your practitioner</h2>
+                <div class="dr-practitioner">
+                    <img src="thomas-1.jpg" alt="Thomas Martin, Usui Reiki practitioner at The Reiki Space, Buxton" width="150" height="150" loading="lazy">
+                    <div>
+                        <p class="dr-prac-name">Thomas Martin</p>
+                        <p class="dr-prac-title">Usui Reiki Practitioner</p>
+                        <p>I&rsquo;m a holistic therapist and Usui Reiki practitioner based in Buxton, Derbyshire, offering distance sessions across the UK and worldwide. I came to this work through my own experience of seeking support through difficult times, and I hold the same care and presence for every client, whether we meet in person or remotely.</p>
+                        <ul class="dr-prac-creds">
+                            <li>Practitioner member of the <a href="https://www.reikifed.co.uk/" target="_blank" rel="noopener">UK Reiki Federation</a> (2026), a benchmark requiring verified training, ongoing CPD and full insurance</li>
+                            <li>Usui Reiki Level 2 practitioner, trained and initiated into the Usui lineage in 2018, tracing directly back to Mikao Usui</li>
+                            <li>Full professional indemnity &amp; public liability insurance with Balens</li>
+                            <li>Based in Buxton, Derbyshire; distance sessions available UK-wide and worldwide</li>
+                        </ul>
+                        <p class="dr-prac-links"><a href="certificates.html">View my certificates &amp; accreditations</a> &nbsp;&middot;&nbsp; <a href="index.html#about">More about me</a></p>
+                    </div>
+                </div>
 
                 <h2>Common questions about distance Reiki</h2>
                 <div class="faq-container">
