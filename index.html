@@ -348,8 +348,9 @@
         .skip-link:focus { top: 0; }
         
         nav {
-            background: rgba(248,246,240,0.95);
-            backdrop-filter: blur(20px) saturate(150%);
+            background: rgba(248,246,240,0.97);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             padding: var(--space-md) var(--space-lg);
             position: fixed;
             width: 100%;
@@ -1996,9 +1997,8 @@
             box-shadow: var(--shadow-md);
             transition: all var(--transition-base);
             border: 2px solid rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
         }
-        
+
         .contact-btn.whatsapp {
             background: linear-gradient(135deg, rgba(37,211,102,0.95), rgba(37,211,102,1));
             animation: gentlePulse 3s ease-in-out infinite;
@@ -2086,7 +2086,6 @@
             box-shadow: var(--shadow-md);
             transition: all var(--transition-base);
             border: 2px solid rgba(255,255,255,0.3);
-            backdrop-filter: blur(10px);
             min-height: 48px;
             user-select: none;
             position: relative;
@@ -3463,7 +3462,7 @@
                     });
                     ticking = true;
                 }
-            });
+            }, { passive: true });
             
             // Section fade-in on scroll
             const sections = document.querySelectorAll('.section');
@@ -3482,13 +3481,17 @@
             // Hero content fade on scroll
             const heroContent = document.querySelector('.hero-content');
             if (heroContent) {
+                let heroTicking = false;
                 window.addEventListener('scroll', function() {
-                    const scrolled = window.pageYOffset;
-                    const opacity = 1 - (scrolled / 600);
-                    if (opacity >= 0) {
-                        heroContent.style.opacity = opacity;
-                    }
-                });
+                    if (heroTicking) return;
+                    heroTicking = true;
+                    window.requestAnimationFrame(function() {
+                        const scrolled = window.pageYOffset;
+                        const opacity = 1 - (scrolled / 600);
+                        heroContent.style.opacity = opacity >= 0 ? opacity : 0;
+                        heroTicking = false;
+                    });
+                }, { passive: true });
             }
             
             // Credential badge staggered reveal
@@ -3509,13 +3512,14 @@
             
             // Navigation scroll effect
             const nav = document.querySelector('nav');
+            let navScrolled = false;
             window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 100) {
-                    nav.classList.add('scrolled');
-                } else {
-                    nav.classList.remove('scrolled');
+                const past = window.pageYOffset > 100;
+                if (past !== navScrolled) {
+                    navScrolled = past;
+                    nav.classList.toggle('scrolled', past);
                 }
-            });
+            }, { passive: true });
 
             // Offset the hero below the fixed nav by the nav's actual height (mobile),
             // so a tall/wrapping trust bar can't clip the heading.
@@ -3661,15 +3665,15 @@
             const stickyContacts = document.getElementById('stickyContacts');
             const freshaButton = document.getElementById('freshaButton');
             if (stickyContacts && freshaButton) {
+                let stickyShown = false;
                 window.addEventListener('scroll', function() {
-                    if (window.pageYOffset > 300) {
-                        stickyContacts.classList.add('visible');
-                        freshaButton.classList.add('visible');
-                    } else {
-                        stickyContacts.classList.remove('visible');
-                        freshaButton.classList.remove('visible');
+                    const show = window.pageYOffset > 300;
+                    if (show !== stickyShown) {
+                        stickyShown = show;
+                        stickyContacts.classList.toggle('visible', show);
+                        freshaButton.classList.toggle('visible', show);
                     }
-                });
+                }, { passive: true });
             }
             
             // Touch device detection
