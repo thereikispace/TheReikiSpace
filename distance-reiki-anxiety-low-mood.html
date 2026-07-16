@@ -2175,8 +2175,192 @@
                 <p>If you&rsquo;ve read this far, something about the idea has probably struck a chord. You don&rsquo;t need to fully believe in it to benefit, just a willingness to lie down, breathe, and let an hour be yours. If you&rsquo;re still unsure whether distance Reiki is right for you, feel free to get in touch before booking. I&rsquo;m always happy to answer questions first.</p>
 
                 <div class="art-cta">
-                    <a href="distance-reiki.html#book" class="btn">Book a Distance Session</a>
+                    <button type="button" class="btn" id="distanceToggleBtn" aria-expanded="false" aria-controls="distanceInlineForm" onclick="toggleDistanceForm()">Book a Distance Session</button>
                     <p class="art-contact">Prefer to ask something first? Email <a href="mailto:thereikispacebuxton@gmail.com">thereikispacebuxton@gmail.com</a>, call <a href="tel:07588295780">07588&nbsp;295&nbsp;780</a>, or message on WhatsApp <a href="https://wa.me/447493116637" target="_blank" rel="noopener">07493&nbsp;116637</a>.<br>You can also read more about <a href="distance-reiki.html">distance Reiki sessions</a>.</p>
+                </div>
+
+<!-- INLINE DISTANCE BOOKING FORM -->
+                <div id="distanceInlineForm" style="display:none; margin-top:var(--space-2xl);" aria-hidden="true">
+
+                    <div class="section-header" style="margin-bottom:var(--space-xl);">
+                        <h3 style="font-family:'Cinzel',serif; color:var(--deep-brown); font-size:var(--font-size-xl); font-weight:500;">Your Distance Session Request</h3>
+                        <p>Choose your preferences below and I will be in touch within 24 hours to confirm availability.</p>
+                    </div>
+
+                    <!-- DURATION SELECTION -->
+                    <div class="form-group">
+                        <label>Session length</label>
+                        <div class="dist-picker-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-md); margin-top:var(--space-sm);">
+                            <div class="dist-option card" data-group="duration" data-value="30 minutes — £35" tabindex="0" role="button" aria-pressed="false" style="text-align:center; cursor:pointer; padding:var(--space-lg) var(--space-md); transition:all 0.3s ease;">
+                                <p style="font-family:'Cinzel',serif; font-size:var(--font-size-base); color:var(--deep-brown); margin-bottom:0.25rem;">30 min</p>
+                                <p style="font-family:'Cormorant',serif; font-size:var(--font-size-2xl); color:var(--warm-terracotta); font-weight:500;">£35</p>
+                            </div>
+                            <div class="dist-option card" data-group="duration" data-value="45 minutes — £45" tabindex="0" role="button" aria-pressed="false" style="text-align:center; cursor:pointer; padding:var(--space-lg) var(--space-md); transition:all 0.3s ease; border-color:var(--warm-terracotta);">
+                                <p style="font-family:'Cinzel',serif; font-size:var(--font-size-base); color:var(--deep-brown); margin-bottom:0.25rem;">45 min</p>
+                                <p style="font-family:'Cormorant',serif; font-size:var(--font-size-2xl); color:var(--warm-terracotta); font-weight:500;">£45</p>
+                            </div>
+                            <div class="dist-option card" data-group="duration" data-value="60 minutes — £55" tabindex="0" role="button" aria-pressed="false" style="text-align:center; cursor:pointer; padding:var(--space-lg) var(--space-md); transition:all 0.3s ease;">
+                                <p style="font-family:'Cinzel',serif; font-size:var(--font-size-base); color:var(--deep-brown); margin-bottom:0.25rem;">60 min</p>
+                                <p style="font-family:'Cormorant',serif; font-size:var(--font-size-2xl); color:var(--warm-terracotta); font-weight:500;">£55</p>
+                                <p style="font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--warm-terracotta); margin-top:0.25rem; opacity:0.8; font-style:italic;">Recommended</p>
+                            </div>
+                        </div>
+                        <input type="hidden" id="dist_duration" value="">
+                    </div>
+
+                    <!-- DATE PREFERENCE -->
+                    <div class="form-group" style="margin-top:var(--space-xl);">
+                        <label style="display:flex; align-items:center; gap:var(--space-sm); cursor:pointer; font-size:var(--font-size-sm); text-transform:none; letter-spacing:0; font-family:'Cormorant',serif; font-weight:400;">
+                            <input type="checkbox" id="dist_flexible" name="flexible_date" value="I am flexible — please suggest availability" onchange="toggleDistDateInput(this)" style="width:auto; min-height:auto; accent-color:var(--warm-terracotta);"> I'm flexible on dates — please suggest availability
+                        </label>
+                    </div>
+
+                    <div id="distDateFields" class="form-group" style="margin-top:var(--space-xl);">
+                        <label>Preferred date (optional)</label>
+                        <div style="display: flex; align-items: center; gap: var(--space-md); flex-wrap: wrap; margin-top: var(--space-sm);">
+                            <input type="date" id="dist_date" name="preferred_date" style="flex: 1; min-width: 180px; padding: var(--space-md); border: 2px solid rgba(193,123,92,0.2); border-radius: var(--border-radius); font-family: 'Cormorant', serif; font-size: 16px; color: var(--text-on-cream); background: rgba(255,255,255,0.7); min-height: 48px;" min="">
+                        </div>
+                    </div>
+
+                    <!-- DAY PREFERENCE -->
+                    <div id="distDayFields" class="form-group" style="margin-top:var(--space-xl);">
+                        <label>Preferred day</label>
+                        <div style="display:flex; flex-wrap:wrap; gap:var(--space-sm); margin-top:var(--space-sm);">
+                            <button type="button" class="dist-pill" data-group="day" data-value="Monday">Monday</button>
+                            <button type="button" class="dist-pill" data-group="day" data-value="Tuesday">Tuesday</button>
+                            <button type="button" class="dist-pill" data-group="day" data-value="Wednesday">Wednesday</button>
+                            <button type="button" class="dist-pill" data-group="day" data-value="Thursday">Thursday</button>
+                            <button type="button" class="dist-pill" data-group="day" data-value="Friday">Friday</button>
+                            <button type="button" class="dist-pill" data-group="day" data-value="Saturday">Saturday</button>
+                            <button type="button" class="dist-pill" data-group="day" data-value="Sunday">Sunday</button>
+                        </div>
+                        <input type="hidden" id="dist_day" value="">
+                    </div>
+
+                    <!-- TIMEZONE CONVERTER -->
+                    <div id="distTzFields" class="form-group" style="margin-top:var(--space-xl);">
+                        <label style="display:block; margin-bottom:var(--space-sm);">Outside the UK? Select your timezone to see session times in your local time <span style="font-family:'Cormorant',serif; font-size:0.9rem; color:#6B5B4E; text-transform:none; letter-spacing:0; font-weight:400;">(optional)</span></label>
+                        <select id="tzSelect" onchange="updateTzDisplay(); updateDistSummary();" style="width:100%; padding:var(--space-md); border:2px solid rgba(193,123,92,0.2); border-radius:var(--border-radius); font-family:'Cormorant',serif; font-size:16px; color:var(--text-on-cream); background:rgba(255,255,255,0.7); min-height:48px;">
+                            <option value="">Select your timezone</option>
+                            <optgroup label="North America">
+                                <option value="America/New_York">New York / Toronto (ET)</option>
+                                <option value="America/Chicago">Chicago / Dallas (CT)</option>
+                                <option value="America/Denver">Denver / Calgary (MT)</option>
+                                <option value="America/Los_Angeles">Los Angeles / Vancouver (PT)</option>
+                            </optgroup>
+                            <optgroup label="Europe">
+                                <option value="Europe/Paris">Paris / Berlin / Madrid (CET)</option>
+                                <option value="Europe/Athens">Athens / Istanbul (EET)</option>
+                            </optgroup>
+                            <optgroup label="Middle East & Africa">
+                                <option value="Asia/Dubai">Dubai / Abu Dhabi (GST)</option>
+                                <option value="Africa/Johannesburg">Johannesburg / Cape Town (SAST)</option>
+                            </optgroup>
+                            <optgroup label="Asia & Pacific">
+                                <option value="Asia/Kolkata">India (IST)</option>
+                                <option value="Asia/Singapore">Singapore / Malaysia (SGT)</option>
+                                <option value="Asia/Hong_Kong">Hong Kong (HKT)</option>
+                                <option value="Asia/Tokyo">Japan / Korea (JST)</option>
+                                <option value="Australia/Sydney">Sydney / Melbourne (AEST)</option>
+                                <option value="Pacific/Auckland">New Zealand (NZST)</option>
+                            </optgroup>
+                        </select>
+                        <div id="tzResult" style="display:none; margin-top:var(--space-md); background:var(--warm-taupe); border-radius:var(--border-radius); padding:var(--space-md) var(--space-lg); border:1.5px solid rgba(184,150,95,0.25);">
+                            <p style="font-family:'Montserrat',sans-serif; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--warm-terracotta); margin-bottom:var(--space-sm);">Session times in your timezone</p>
+                            <p id="tzMorning"  style="font-size:var(--font-size-base); color:var(--text-on-cream); margin-bottom:0.25rem;"></p>
+                            <p id="tzAfternoon" style="font-size:var(--font-size-base); color:var(--text-on-cream); margin-bottom:0.25rem;"></p>
+                            <p id="tzEvening"  style="font-size:var(--font-size-base); color:var(--text-on-cream); margin-bottom:0;"></p>
+                            <p style="font-size:0.85rem; color:#6B5B4E; margin-top:var(--space-sm); font-style:italic;">These are the available booking windows — your session (30, 45, or 60 minutes) will be scheduled within your chosen window. Times adjust automatically for daylight saving.</p>
+                        </div>
+                    </div>
+
+                    <!-- TIME PREFERENCE -->
+                    <div id="distTimeFields" class="form-group" style="margin-top:var(--space-xl);">
+                        <label>Preferred time of day</label>
+                        <div class="dist-picker-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-md); margin-top:var(--space-sm);">
+                            <div class="dist-option card" data-group="time" data-value="Morning (9am to 12pm)" tabindex="0" role="button" aria-pressed="false" style="text-align:center; cursor:pointer; padding:var(--space-md); transition:all 0.3s ease;">
+                                <p style="font-size:1.5rem; margin-bottom:0.25rem;">🌄</p>
+                                <p style="font-family:'Cinzel',serif; color:var(--deep-brown); font-size:var(--font-size-sm);">Morning</p>
+                                <p style="font-size:0.875rem; color:var(--link-colour); opacity:0.8; margin-top:0.2rem;">9am to 12pm</p>
+                                <p id="tzLabel_morning" style="font-size:0.85rem; color:var(--warm-terracotta); margin-top:0.3rem; display:none; font-style:italic;"></p>
+                            </div>
+                            <div class="dist-option card" data-group="time" data-value="Afternoon (12pm to 5pm)" tabindex="0" role="button" aria-pressed="false" style="text-align:center; cursor:pointer; padding:var(--space-md); transition:all 0.3s ease;">
+                                <p style="font-size:1.5rem; margin-bottom:0.25rem;">☀️</p>
+                                <p style="font-family:'Cinzel',serif; color:var(--deep-brown); font-size:var(--font-size-sm);">Afternoon</p>
+                                <p style="font-size:0.875rem; color:var(--link-colour); opacity:0.8; margin-top:0.2rem;">12pm to 5pm</p>
+                                <p id="tzLabel_afternoon" style="font-size:0.85rem; color:var(--warm-terracotta); margin-top:0.3rem; display:none; font-style:italic;"></p>
+                            </div>
+                            <div class="dist-option card" data-group="time" data-value="Evening (5pm to 9pm)" tabindex="0" role="button" aria-pressed="false" style="text-align:center; cursor:pointer; padding:var(--space-md); transition:all 0.3s ease;">
+                                <p style="font-size:1.5rem; margin-bottom:0.25rem;">🌙</p>
+                                <p style="font-family:'Cinzel',serif; color:var(--deep-brown); font-size:var(--font-size-sm);">Evening</p>
+                                <p style="font-size:0.875rem; color:var(--link-colour); opacity:0.8; margin-top:0.2rem;">5pm to 9pm</p>
+                                <p id="tzLabel_evening" style="font-size:0.85rem; color:var(--warm-terracotta); margin-top:0.3rem; display:none; font-style:italic;"></p>
+                            </div>
+                        </div>
+                        <input type="hidden" id="dist_time" value="">
+                    </div>
+
+                    <!-- CONTACT DETAILS FORM -->
+                    <p style="text-align:center; font-family:'Cormorant',serif; font-style:italic; font-size:var(--font-size-base); color:#6B5B4E; margin-top:var(--space-xl);">If you have specific dates or times in mind not covered above, feel free to mention them in the message box below.</p>
+
+                    <form class="card" id="distanceForm" style="margin-top:var(--space-lg);" novalidate>
+                        <input type="hidden" name="access_key" value="8ff07d44-670c-4e4c-8834-1e1470fe9bd5">
+                        <input type="hidden" name="subject" value="Distance Reiki Session Booking Request">
+                        <input type="hidden" name="from_name" value="The Reiki Space — Distance Booking">
+                        <input type="hidden" name="redirect" value="false">
+                        <input type="hidden" name="session_type" value="Distance Session">
+                        <input type="hidden" id="form_duration" name="duration" value="">
+                        <input type="hidden" id="form_day" name="preferred_day" value="">
+                        <input type="hidden" id="form_time" name="preferred_time" value="">
+                        <input type="hidden" id="form_summary" name="booking_summary" value="">
+                        <input type="hidden" id="form_client_timezone" name="client_timezone" value="">
+                        <input type="hidden" id="form_time_in_client_tz" name="time_in_client_timezone" value="">
+
+                        <div class="form-group">
+                            <label for="dist_name">Your Name</label>
+                            <input type="text" id="dist_name" name="name" autocomplete="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dist_email">Email Address</label>
+                            <input type="email" id="dist_email" name="email" autocomplete="email" required>
+                            <p class="form-help">Your information is kept private and only used to respond to your enquiry.</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="dist_phone">Phone Number (required for WhatsApp or phone call)</label>
+                            <input type="tel" id="dist_phone" name="phone" autocomplete="tel" placeholder="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dist_platform">How would you prefer to connect?</label>
+                            <select id="dist_platform" name="preferred_platform" required onchange="updatePhoneRequirement(this.value)" style="width:100%; padding:var(--space-md); border:2px solid rgba(193,123,92,0.2); border-radius:var(--border-radius); font-family:'Cormorant',serif; font-size:16px; color:var(--text-on-cream); background:rgba(255,255,255,0.7); min-height:48px; margin-bottom:var(--space-lg);">
+                                <option value="" disabled selected>Please select how you would like to connect</option>
+                                <option value="WhatsApp video call">WhatsApp video call</option>
+                                <option value="WhatsApp voice call">WhatsApp voice call</option>
+                                <option value="Google Meet">Google Meet</option>
+                                <option value="Microsoft Teams">Microsoft Teams</option>
+                                <option value="Phone call">Phone call</option>
+                            </select>
+                            <label for="dist_message">Anything you would like me to know? (optional)</label>
+                            <textarea id="dist_message" name="message" rows="4" placeholder="Feel free to share anything that would help me prepare for your session, or simply say hello."></textarea>
+                        </div>
+
+                        <!-- BOOKING SUMMARY -->
+                        <div id="distSummaryBar" style="display:none; margin-bottom:var(--space-lg);">
+                            <label style="display:block; margin-bottom:var(--space-sm);">Booking Summary</label>
+                            <div style="background:var(--warm-taupe); border-radius:var(--border-radius); padding:var(--space-md) var(--space-lg); border:1.5px solid rgba(184,150,95,0.3);">
+                                <p id="distSummaryText" style="font-size:var(--font-size-base); color:var(--text-on-cream); line-height:1.8; margin:0;"></p>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn" id="distSubmitBtn" style="width:100%;">Send My Booking Request</button>
+                        <p style="text-align:center; font-size:var(--font-size-base); margin-top:var(--space-md); color:var(--deep-brown); font-family:'Montserrat',sans-serif; letter-spacing:0.04em;">I respond to all enquiries within 24 hours. &nbsp;|&nbsp; <strong>Data Protection:</strong> Your details will not be shared with third parties.</p>
+                    </form>
+
+                    <!-- SUCCESS MESSAGE -->
+                    <div id="distSuccessMessage" class="card" style="display:none; text-align:center; padding:var(--space-2xl);">
+                        <h3 style="font-family:'Cinzel',serif; color:var(--deep-brown); margin-bottom:var(--space-md);">Thank You</h3>
+                        <p>Your booking request has been received. I will be in touch within 24 hours to confirm availability and arrange payment.</p>
+                    </div>
+
                 </div>
 
                 <p class="art-safety">Reiki is a complementary practice that supports relaxation and wellbeing. It is not a substitute for medical care and does not diagnose, treat or cure any condition. Please continue with any treatment advised by your doctor, and contact your GP or a mental health professional if you are struggling.</p>
@@ -2245,6 +2429,311 @@
             window.addEventListener('scroll', function(){ if(window.scrollY > 60) show(); }, { passive: true });
             setTimeout(show, 700);
         })();
+    </script>
+    <script>
+    // ── DISTANCE BOOKING FORM ───────────────────────────────────────────
+    function toggleDistanceForm() {
+        const form   = document.getElementById('distanceInlineForm');
+        const btn    = document.getElementById('distanceToggleBtn');
+        const isOpen = form.style.display !== 'none';
+
+        form.style.display    = isOpen ? 'none' : 'block';
+        form.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
+        btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+        btn.textContent = isOpen ? 'Book a Distance Session' : 'Close Booking Form';
+
+        if (!isOpen) {
+            setTimeout(function() {
+                form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+    }
+
+    function isDST(date) {
+        var jan = new Date(date.getFullYear(), 0, 1).getTimezoneOffset();
+        var jul = new Date(date.getFullYear(), 6, 1).getTimezoneOffset();
+        return Math.max(jan, jul) !== date.getTimezoneOffset();
+    }
+
+    function updateDistSummary() {
+        var duration = document.getElementById('dist_duration') ? document.getElementById('dist_duration').value : '';
+        var day      = document.getElementById('dist_day')      ? document.getElementById('dist_day').value      : '';
+        var time     = document.getElementById('dist_time')     ? document.getElementById('dist_time').value     : '';
+        var dateEl   = document.getElementById('dist_date');
+        var dateVal  = (dateEl && !dateEl.disabled && dateEl.value) ? dateEl.value : '';
+        var bar      = document.getElementById('distSummaryBar');
+        var text     = document.getElementById('distSummaryText');
+        var hidden   = document.getElementById('form_summary');
+        var parts    = [];
+        if (duration) parts.push('Session: Distance · ' + duration);
+        if (dateVal)  parts.push('Date: ' + dateVal);
+        if (day)      parts.push('Day: ' + day);
+        if (time)     parts.push('Time (UK): ' + time);
+
+        var tzSel = document.getElementById('tzSelect');
+        var tzVal = tzSel ? tzSel.value : '';
+        var tzName = tzSel ? tzSel.options[tzSel.selectedIndex].text : '';
+        var localTimeStr = '';
+        if (tzVal && time) {
+            var timeMap = {
+                'Morning (9am to 12pm)': {start:9, end:12},
+                'Afternoon (12pm to 5pm)': {start:12, end:17},
+                'Evening (5pm to 9pm)': {start:17, end:21}
+            };
+            var slot = null;
+            for (var key in timeMap) {
+                if (time.indexOf(key.split(' ')[0]) !== -1) { slot = timeMap[key]; break; }
+            }
+            if (!slot) {
+                if (time.indexOf('Morning') !== -1) slot = {start:9, end:12};
+                else if (time.indexOf('Afternoon') !== -1) slot = {start:14, end:17};
+                else if (time.indexOf('Evening') !== -1) slot = {start:17, end:20};
+            }
+            if (slot) {
+                try {
+                    var today = new Date();
+                    var yr = today.getFullYear();
+                    var mo = String(today.getMonth()+1).padStart(2,'0');
+                    var dy = String(today.getDate()).padStart(2,'0');
+                    var ukOffset = isDST(today) ? -60 : 0;
+                    var startUTC = new Date(yr+'-'+mo+'-'+dy+'T'+String(slot.start).padStart(2,'0')+':00:00Z');
+                    startUTC = new Date(startUTC.getTime() + ukOffset * 60000);
+                    var endUTC = new Date(startUTC.getTime() + (slot.end - slot.start) * 3600000);
+                    var fmt = {hour:'2-digit', minute:'2-digit', timeZone:tzVal, hour12:true};
+                    var startLocal = startUTC.toLocaleTimeString('en-GB', fmt);
+                    var endLocal   = endUTC.toLocaleTimeString('en-GB', fmt);
+                    localTimeStr = startLocal + ' to ' + endLocal + ' (' + tzName + ')';
+                    parts.push('Your local time: ' + localTimeStr);
+                    var hTz = document.getElementById('form_client_timezone');
+                    var hTzTime = document.getElementById('form_time_in_client_tz');
+                    if (hTz) hTz.value = tzName;
+                    if (hTzTime) hTzTime.value = localTimeStr;
+                } catch(e) {}
+            }
+        } else {
+            var hTz = document.getElementById('form_client_timezone');
+            var hTzTime = document.getElementById('form_time_in_client_tz');
+            if (hTz) hTz.value = '';
+            if (hTzTime) hTzTime.value = '';
+        }
+
+        if (parts.length > 0 && bar && text) {
+            text.textContent = parts.join('  ·  ');
+            bar.style.display = 'block';
+            if (hidden) hidden.value = parts.join(' | ');
+        } else if (bar) {
+            bar.style.display = 'none';
+        }
+    }
+
+    document.addEventListener('click', function(e) {
+        const el = e.target.closest('.dist-option, .dist-pill');
+        if (!el) return;
+        const group = el.dataset.group;
+        const value = el.dataset.value;
+
+        document.querySelectorAll('[data-group="' + group + '"]').forEach(function(s) {
+            s.classList.remove('dist-selected');
+            if (s.getAttribute('aria-pressed') !== null) s.setAttribute('aria-pressed', 'false');
+        });
+
+        el.classList.add('dist-selected');
+        if (el.getAttribute('aria-pressed') !== null) el.setAttribute('aria-pressed', 'true');
+
+        const hiddenSelect = document.getElementById('dist_' + group);
+        const hiddenForm   = document.getElementById('form_' + group);
+        if (hiddenSelect) hiddenSelect.value = value;
+        if (hiddenForm)   hiddenForm.value   = value;
+
+        updateDistSummary();
+    });
+
+    document.querySelectorAll('.dist-option').forEach(function(el) {
+        el.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                el.click();
+            }
+        });
+    });
+
+    function toggleDistDateInput(checkbox) {
+        var dateInput = document.getElementById('dist_date');
+        if (!dateInput) return;
+        var schedulingFields = ['distDateFields','distDayFields','distTzFields'];
+        if (checkbox.checked) {
+            dateInput.disabled = true;
+            dateInput.value = '';
+            schedulingFields.forEach(function(id) {
+                var el = document.getElementById(id);
+                if (el) {
+                    el.style.opacity = '0.3';
+                    el.style.pointerEvents = 'none';
+                    el.style.transition = 'opacity 0.3s ease';
+                }
+            });
+            document.querySelectorAll('[data-group="day"]').forEach(function(el) {
+                el.classList.remove('dist-selected');
+                el.classList.add('dist-disabled');
+                el.setAttribute('aria-disabled', 'true');
+            });
+            var hiddenDay = document.getElementById('dist_day');
+            var formDay = document.getElementById('form_day');
+            if (hiddenDay) hiddenDay.value = 'Flexible';
+            if (formDay) formDay.value = 'Flexible';
+            updateDistSummary();
+            setTimeout(function() {
+                var contactForm = document.getElementById('distanceForm');
+                if (contactForm) contactForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 600);
+        } else {
+            dateInput.disabled = false;
+            schedulingFields.forEach(function(id) {
+                var el = document.getElementById(id);
+                if (el) {
+                    el.style.opacity = '1';
+                    el.style.pointerEvents = 'auto';
+                }
+            });
+            document.querySelectorAll('[data-group="day"]').forEach(function(el) {
+                el.classList.remove('dist-disabled');
+                el.removeAttribute('aria-disabled');
+            });
+            var hiddenDay = document.getElementById('dist_day');
+            var formDay = document.getElementById('form_day');
+            if (hiddenDay) hiddenDay.value = '';
+            if (formDay) formDay.value = '';
+            updateDistSummary();
+        }
+    }
+
+    function updateTzDisplay() {
+        var tz = document.getElementById('tzSelect').value;
+        var result = document.getElementById('tzResult');
+        if (!tz) { result.style.display = 'none'; hideTzCardLabels(); return; }
+
+        var sessions = [
+            { id: 'tzMorning',   label: 'Morning window (9am to 12pm UK)', start: 9,  end: 12 },
+            { id: 'tzAfternoon', label: 'Afternoon window (12pm to 5pm UK)', start: 12, end: 17 },
+            { id: 'tzEvening',   label: 'Evening window (5pm to 9pm UK)',   start: 17, end: 21 },
+        ];
+
+        var today = new Date();
+        var yr = today.getFullYear();
+        var mo = String(today.getMonth()+1).padStart(2,'0');
+        var dy = String(today.getDate()).padStart(2,'0');
+
+        sessions.forEach(function(s) {
+            var startUTC = new Date(yr+'-'+mo+'-'+dy+'T'+String(s.start).padStart(2,'0')+':00:00Z');
+            var ukOffset = isDST(today) ? -60 : 0;
+            startUTC = new Date(startUTC.getTime() + ukOffset * 60000);
+
+            var endUTC = new Date(startUTC.getTime() + (s.end - s.start) * 3600000);
+
+            var fmt = { hour: '2-digit', minute: '2-digit', timeZone: tz, hour12: true };
+            try {
+                var startLocal = startUTC.toLocaleTimeString('en-GB', fmt);
+                var endLocal   = endUTC.toLocaleTimeString('en-GB', fmt);
+                document.getElementById(s.id).textContent = s.label.split('(')[0].trim() + ': ' + startLocal + ' to ' + endLocal;
+            } catch(e) {
+                document.getElementById(s.id).textContent = s.label + ' (conversion unavailable)';
+            }
+        });
+        result.style.display = 'block';
+
+        var labelMap = {
+            'tzMorning':   'tzLabel_morning',
+            'tzAfternoon': 'tzLabel_afternoon',
+            'tzEvening':   'tzLabel_evening'
+        };
+        sessions.forEach(function(s) {
+            var lbl = document.getElementById(labelMap[s.id]);
+            var display = document.getElementById(s.id);
+            if (lbl && display && display.textContent) {
+                var txt = display.textContent;
+                var colonIdx = txt.indexOf(':');
+                if (colonIdx !== -1) {
+                    lbl.textContent = txt.substring(colonIdx+1).trim() + ' your time (booking window)';
+                    lbl.style.display = 'block';
+                }
+            }
+        });
+    }
+
+    function hideTzCardLabels() {
+        ['tzLabel_morning','tzLabel_afternoon','tzLabel_evening'].forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) { el.style.display = 'none'; el.textContent = ''; }
+        });
+    }
+
+    function updatePhoneRequirement(platform) {
+        var phoneInput = document.getElementById('dist_phone');
+        var phoneLabel = document.querySelector('label[for="dist_phone"]');
+        if (!phoneInput) return;
+        var needsPhone = (platform === 'WhatsApp video call' || platform === 'WhatsApp voice call' || platform === 'Phone call');
+        if (needsPhone) {
+            phoneInput.required = true;
+            if (phoneLabel) phoneLabel.textContent = 'Phone Number (required)';
+        } else {
+            phoneInput.required = false;
+            if (phoneLabel) phoneLabel.textContent = 'Phone Number (required for WhatsApp or phone call)';
+        }
+    }
+
+    (function(){
+        var distForm = document.getElementById('distanceForm');
+        if (!distForm) return;
+        distForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn  = document.getElementById('distSubmitBtn');
+            const name = document.getElementById('dist_name').value.trim();
+            const email = document.getElementById('dist_email').value.trim();
+
+            if (!name || !email) {
+                alert('Please enter your name and email address.');
+                return;
+            }
+
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: new FormData(distForm)
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    distForm.style.display = 'none';
+                    document.getElementById('distSuccessMessage').style.display = 'block';
+                } else {
+                    btn.textContent = 'Send My Booking Request';
+                    btn.disabled = false;
+                    var errEl = document.createElement('p');
+                    errEl.style.cssText = 'color:var(--warm-terracotta);margin-top:1rem;font-size:0.875rem;text-align:center;';
+                    errEl.textContent = 'Something went wrong. Please try again or contact me directly at thereikispacebuxton@gmail.com';
+                    btn.insertAdjacentElement('afterend', errEl);
+                }
+            } catch(err) {
+                btn.textContent = 'Send My Booking Request';
+                btn.disabled = false;
+                var errEl = document.createElement('p');
+                errEl.style.cssText = 'color:var(--warm-terracotta);margin-top:1rem;font-size:0.875rem;text-align:center;';
+                errEl.textContent = 'Something went wrong. Please try again or contact me directly at thereikispacebuxton@gmail.com';
+                btn.insertAdjacentElement('afterend', errEl);
+            }
+        });
+    })();
+
+    // Arriving from a link with #book (e.g. the article's call to action) opens the
+    // booking form straight away rather than landing on a collapsed section.
+    (function(){
+        if (window.location.hash !== '#book') return;
+        var form = document.getElementById('distanceInlineForm');
+        if (form && form.style.display === 'none') { toggleDistanceForm(); }
+    })();
     </script>
 </body>
 </html>
