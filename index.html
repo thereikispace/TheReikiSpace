@@ -774,13 +774,16 @@
             animation: textGlow 3s ease-in-out infinite alternate;
         }
         
-        /* Hero text readable on dark gradient — mobile and portrait tablet (up to 899px) */
+        /* Hero text readable on dark gradient — mobile and portrait tablet (up to 899px).
+           Also stop the text-shadow glow animation here: it repaints the large heading every
+           frame (scroll stutter) and would override the flat cream look intended on mobile. */
         @media (max-width: 899px) {
             .hero-content h1,
             .hero-content p {
                 color: var(--cream) !important;
                 -webkit-text-fill-color: var(--cream) !important;
                 text-shadow: 0 2px 4px rgba(44,24,16,0.3);
+                animation: none !important;
             }
         }
         
@@ -2215,6 +2218,15 @@
                 height: 44px;
             }
             .contact-btn i { font-size: 1.2rem; }
+        }
+
+        /* Stop the continuous box-shadow pulse on the sticky buttons on mobile — it repaints
+           every frame and costs scroll smoothness. Buttons stay fully visible and tappable. */
+        @media (max-width: 900px) {
+            .contact-btn.whatsapp,
+            .fresha-btn {
+                animation: none;
+            }
         }
 
         /* Accessibility - respect user's reduce motion preference */
