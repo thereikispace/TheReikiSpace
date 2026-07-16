@@ -205,9 +205,9 @@
         /* MOBILE-FIRST OPTIMIZED REIKI WEBSITE
            Progressive enhancement for all devices
            Simplified fallbacks for older phones */
-        
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600&family=Cinzel:wght@400;500;600&family=Montserrat:wght@200;300;400&display=swap');
-        
+
+        /* Fonts are loaded via <link rel="stylesheet"> in <head> (no @import here — avoids a second render-blocking fetch and load-time flicker) */
+
         :root {
             /* YOUR WARM PALETTE */
             --deep-brown: #2C1810;
@@ -3519,7 +3519,9 @@
             const heroSection = document.getElementById('hero');
             function setHeroOffset() {
                 if (!nav || !heroSection) return;
-                if (window.innerWidth <= 640) {
+                var w = window.innerWidth;
+                // Guard against a transient 0 width during load, which would set a bogus padding.
+                if (w > 0 && w <= 640) {
                     heroSection.style.paddingTop = (nav.offsetHeight + 24) + 'px';
                 } else {
                     heroSection.style.paddingTop = '';
@@ -3528,6 +3530,10 @@
             setHeroOffset();
             window.addEventListener('resize', setHeroOffset);
             window.addEventListener('orientationchange', setHeroOffset);
+            window.addEventListener('load', setHeroOffset);
+            // Recompute once webfonts are ready — the nav's height changes when Cinzel/Montserrat
+            // swap in, so the hero would otherwise jump. This removes the load-time flicker.
+            if (document.fonts && document.fonts.ready) { document.fonts.ready.then(setHeroOffset); }
 
             // Update Book Now position hint based on orientation
             function updateBookNowHint() {
