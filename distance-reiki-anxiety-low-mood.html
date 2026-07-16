@@ -2051,6 +2051,11 @@
         .art-hero h1 { font-family: 'Cinzel', serif; font-weight: 500; color: var(--deep-brown); font-size: clamp(1.6rem, 4.5vw, 2.5rem); line-height: 1.25; letter-spacing: 0.02em; margin-bottom: var(--space-md); }
         .art-meta { font-family: 'Montserrat', sans-serif; font-size: var(--font-size-xs); letter-spacing: 0.08em; color: #8A7A6E; }
         .art-meta a { color: var(--warm-terracotta); text-decoration: none; border-bottom: 1px solid rgba(193,123,92,0.4); }
+        /* Byline with portrait */
+        .art-byline { display: flex; align-items: center; justify-content: center; gap: var(--space-md); margin-top: var(--space-lg); }
+        .art-byline img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; object-position: center top; border: 2px solid var(--gold); flex-shrink: 0; box-shadow: var(--shadow-sm); }
+        .art-byline .art-meta { text-align: left; margin: 0; line-height: 1.7; }
+        .art-byline .art-meta strong { color: var(--deep-brown); font-weight: 500; }
         .art-wrap { max-width: var(--max-width-narrow); margin: 0 auto; padding: 0 var(--space-lg); }
         .art-wrap h2 { font-family: 'Cinzel', serif; font-weight: 500; font-size: clamp(1.3rem, 3.6vw, 1.75rem); color: var(--warm-terracotta); letter-spacing: 0.03em; line-height: 1.35; margin: var(--space-2xl) 0 var(--space-md); }
         .art-wrap p { margin-bottom: var(--space-lg); line-height: 1.9; }
@@ -2116,7 +2121,10 @@
         <section class="art-hero">
             <p class="art-eyebrow">Article</p>
             <h1>Distance Reiki, Anxiety &amp; Low Mood: What to Expect When You Can&rsquo;t Be in the Room</h1>
-            <p class="art-meta">By Thomas Martin, Usui Reiki Practitioner &nbsp;&middot;&nbsp; <a href="distance-reiki.html">Distance Reiki sessions</a></p>
+            <div class="art-byline">
+                <img src="thomas-1-square.jpg" alt="Thomas Martin, Usui Reiki practitioner at The Reiki Space, Buxton" width="64" height="64">
+                <p class="art-meta">By <strong>Thomas Martin</strong>, Usui Reiki Practitioner<br><a href="distance-reiki.html">Distance Reiki sessions</a></p>
+            </div>
         </section>
 
         <section class="section" style="padding-top:0;">
