@@ -2180,6 +2180,25 @@
         @media (max-width: 600px) {
             .location-map { aspect-ratio: 4 / 3; }
         }
+
+        /* Responsive vertical (9:16) intro video — YouTube Short embed */
+        .intro-video {
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            aspect-ratio: 9 / 16;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(184,150,95,0.25);
+            background: rgba(184,150,95,0.06);
+        }
+        .intro-video iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
         @media (min-width: 900px) {
             .section-buxton .section-header { margin-bottom: var(--space-4xl); }
         }
@@ -3276,6 +3295,15 @@
         <div class="section-break" aria-hidden="true"></div>
         
         <!-- About Section -->
+        <!-- A Quick Hello — intro video (YouTube Short, no-cookie embed). No nav link by design. -->
+        <section class="section" aria-label="A quick introduction from Thomas">
+            <div class="container-narrow">
+                <div class="intro-video">
+                    <iframe src="https://www.youtube-nocookie.com/embed/MJgQhtC42io" title="Thomas Martin introduces himself — The Reiki Space, Buxton" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
         <section id="about" class="section">
             <div class="container">
                 <div class="section-header">
