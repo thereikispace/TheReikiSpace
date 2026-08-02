@@ -374,7 +374,7 @@
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            gap: var(--space-sm);
+            gap: 0.3rem var(--space-sm);
             padding: var(--space-xs) 0;
             font-family: 'Montserrat', sans-serif;
             font-size: 0.62rem;
@@ -785,6 +785,13 @@
                 text-shadow: 0 2px 4px rgba(44,24,16,0.3);
                 animation: none !important;
             }
+        }
+
+        /* Left-align the hero on narrow-desktop / landscape-tablet widths (below the 900px
+           two-column grid), so the CTA and text sit left rather than centred. Mandala stays centred. */
+        @media (min-width: 768px) and (max-width: 899px) {
+            .hero { align-items: flex-start; text-align: left; }
+            .mandala-container { align-self: center; }
         }
         
         /* BUTTONS */
@@ -2199,6 +2206,22 @@
             border: 0;
             display: block;
         }
+
+        /* "What to Expect" section label — larger and nudged right on desktop.
+           Scoped to #sessions so it beats the wrapping .section-header p rule. */
+        #sessions .expect-label {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.82rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--warm-terracotta);
+            opacity: 0.9;
+            margin: var(--space-4xl) 0 var(--space-lg);
+        }
+        @media (min-width: 900px) {
+            #sessions .expect-label { font-size: 1rem; transform: translateX(1.5rem); }
+        }
         @media (min-width: 900px) {
             .section-buxton .section-header { margin-bottom: var(--space-4xl); }
         }
@@ -2585,10 +2608,10 @@
             <div class="hero-content">
                 <h1>Feel Calmer, Sleep Better, Find Your Footing Again<span class="visually-hidden"> — Reiki in Buxton, Derbyshire</span></h1>
                 <p>Qualified, insured Reiki in Buxton, Derbyshire.</p>
-                <p style="display:inline-block; margin:0 0 var(--space-md); padding:0.5rem 1.35rem; background:rgba(184,150,95,0.18); color:var(--light-gold); border:1px solid rgba(212,188,123,0.7); border-radius:30px; font-family:'Montserrat',sans-serif; font-size:0.82rem; font-weight:600; letter-spacing:0.06em; text-shadow:none; animation:none;">New client offer &nbsp;·&nbsp; first hour just £30</p>
-                <p style="font-family:'Montserrat',sans-serif; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--cream); opacity:0.92; margin-bottom:var(--space-lg); text-shadow:0 2px 4px rgba(44,24,16,0.35); animation:none;">Evenings, weekends &amp; same-day appointments available</p>
+                <p style="font-family:'Montserrat',sans-serif; font-size:0.82rem; font-weight:600; letter-spacing:0.08em; color:var(--light-gold); margin:0 0 var(--space-md); text-shadow:none; animation:none;">New client offer &nbsp;·&nbsp; first session £30</p>
                 <a href="#book" class="hero-cta">Book Your First Session</a>
-                <div style="margin-top: var(--space-lg); padding-top: var(--space-md); border-top: 1px solid rgba(184,150,95,0.35);"><p style="font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.95; color: var(--cream);">Stress &nbsp;·&nbsp; Burnout &nbsp;·&nbsp; Anxiety &nbsp;·&nbsp; Grief &nbsp;·&nbsp; Perimenopause &nbsp;·&nbsp; Life transitions</p></div>
+                <p style="font-family:'Montserrat',sans-serif; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--cream); opacity:0.82; margin:var(--space-md) 0 0; text-shadow:0 2px 4px rgba(44,24,16,0.35); animation:none;">Evenings, weekends &amp; same-day appointments available</p>
+                <div style="margin-top: var(--space-2xl); padding-top: var(--space-md); border-top: 1px solid rgba(184,150,95,0.35);"><p style="font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.95; color: var(--cream);">Stress &nbsp;·&nbsp; Burnout &nbsp;·&nbsp; Anxiety &nbsp;·&nbsp; Grief &nbsp;·&nbsp; Perimenopause &nbsp;·&nbsp; Life transitions</p></div>
                 
             </div>
 
@@ -3089,7 +3112,7 @@
                     <p style="text-align:center; font-size:var(--font-size-base); line-height:1.85; color:var(--text-on-cream); margin:0;">You don't need to be going through something difficult to benefit from Reiki. Many clients come simply for deep relaxation, a reset, or regular time set aside for their own wellbeing. You may find yourself sleeping more deeply, feeling less reactive to stress, and moving through daily life with greater ease, often noticeable after a single session. For those seeking a more sustained shift, a series of sessions tends to help most.</p>
                 </div>
 
-                <p style="text-align:center; font-family:'Montserrat',sans-serif; font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--warm-terracotta); opacity:0.85; margin:var(--space-4xl) 0 var(--space-lg);">What to Expect</p>
+                <p class="expect-label">What to Expect</p>
                 <div class="cards-grid">
 
 <article class="card" style="border-left: 3px solid var(--sage-green);">
