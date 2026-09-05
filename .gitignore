@@ -8,6 +8,40 @@ ehthumbs.db
 
 # Node / dev tooling
 node_modules/
+package.json
+package-lock.json
 
 # Local Claude Code / dev tooling
 .claude/
+
+# ---------------------------------------------------------------------
+# PRIVATE SOURCE MATERIAL — must never be published.
+#
+# The website does NOT use these. It displays separate, web-ready
+# copies which are tracked and unaffected by this list:
+#   cert-facial.jpg, cert-karuna-ki.jpg, cert-meditation-1.jpg,
+#   cert-battlefield-acu.jpg, cert-nada-acu.jpg, cert-intro-acu.jpg,
+#   cert-fasttrack-acu.jpg, cert-counselling.jpg,
+#   reikilevel1.jpg, reikilevel20001.jpg,
+#   UKRF_Membership_Certificate_Thomas_Martin-1jpg.jpg
+#
+# So your certificates stay fully visible on the site. Only the
+# original scans, PDFs and archives are kept off GitHub.
+# ---------------------------------------------------------------------
+
+# Original certificate scans and archives
+cert_extracted/
+certs scanned.zip
+karuna_ki_certificate.png
+*.pdf
+
+# Unused source photos
+about me practitioner photo.jpg
+buxton image.jpg
+uk reiki fed logo.png
+
+# Working notes and drafts (robots.txt is part of the site and stays tracked)
+accessibility.txt
+disclaimer.txt
+treatments reiki facial and infra red.txt
+website codes - expert.txt
