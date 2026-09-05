@@ -466,7 +466,7 @@
             }
         }
         .nav-book-btn { display: none; }
-        @media (min-width: 900px) {
+        @media (min-width: 1250px) {
             .nav-book-link { display: none; }
             .nav-book-btn {
                 display: inline-flex;
@@ -513,6 +513,8 @@
             position: relative;
             transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
             display: inline-block;
+            white-space: nowrap;
+            flex-shrink: 0;
             color: var(--gold);
         }
         
@@ -633,7 +635,7 @@
             line-height: 1;
         }
 
-        @media (min-width: 900px) {
+        @media (min-width: 1250px) {
             .nav-close-item { display: none; }
         }
         
@@ -665,7 +667,7 @@
         }
         .nav-gift a:hover { color: var(--warm-terracotta); }
 
-        @media (min-width: 900px) {
+        @media (min-width: 1250px) {
             .nav-toggle { display: none; }
             .nav-links {
                 position: static;
@@ -675,18 +677,28 @@
                 flex-direction: row;
                 padding: 0;
                 box-shadow: none;
-                gap: var(--space-xl);
+                gap: var(--space-lg);
                 overflow: visible;
                 z-index: auto;
+                margin-right: var(--space-lg);
             }
-            
+
             .nav-links a {
                 font-size: var(--font-size-sm);
                 padding: var(--space-xs) 0;
                 width: auto;
                 min-height: auto;
                 position: relative;
+                white-space: nowrap;
             }
+        }
+
+        /* Roomier spacing once there is width for it */
+        @media (min-width: 1400px) {
+            .nav-links { gap: var(--space-xl); }
+        }
+
+        @media (min-width: 1250px) {
             
             .nav-links a::before {
                 content: '';
@@ -2663,7 +2675,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#what-is-reiki">Reiki</a></li>
                 <li><a href="#sessions">Sessions</a></li>
-                <li><a href="#distance">Distance Sessions</a></li>
+                <li><a href="#distance">Distance Reiki</a></li>
                 <li><a href="treatments.html">Other Treatments</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
                 <li class="nav-book-link"><a href="#book">Book</a></li>
@@ -2903,7 +2915,7 @@
                         <i class="fab fa-google" style="color:var(--warm-terracotta); font-size:1rem;"></i>
                         <span style="font-weight:600; color:var(--deep-brown); font-size:0.95rem;">5.0</span>
                         <span style="color:var(--gold); letter-spacing:0.12em; font-size:0.95rem;" aria-hidden="true">★★★★★</span>
-                        <span style="color:#6B5B4E; font-size:0.8rem; letter-spacing:0.03em;">12 five-star reviews across Google, Facebook and Fresha</span>
+                        <span style="color:#6B5B4E; font-size:0.8rem; letter-spacing:0.03em;">14 five-star reviews across Google, Facebook and Fresha</span>
                     </a>
                 </div>
 

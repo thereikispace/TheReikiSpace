@@ -369,13 +369,48 @@
             background: linear-gradient(90deg, var(--gold), var(--warm-terracotta));
             z-index: 10000; transition: width 0.1s linear;
         }
+        .sticky-contacts {
+            position: fixed;
+            bottom: 1.5rem;
+            bottom: max(1.5rem, env(safe-area-inset-bottom) + 0.5rem);
+            right: 1.5rem; z-index: 1500;
+            display: flex; flex-direction: column; gap: 0.75rem;
+            opacity: 0; transform: translateX(100px);
+            transition: all var(--transition-base);
+        }
+        .sticky-contacts.visible { opacity: 1; transform: translateX(0); }
+        .contact-btn {
+            width: 56px; height: 56px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            text-decoration: none; box-shadow: var(--shadow-md);
+            transition: all var(--transition-base);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .contact-btn.whatsapp { background: linear-gradient(135deg, rgba(37,211,102,0.95), rgba(37,211,102,1)); }
+        .contact-btn.email { background: linear-gradient(135deg, rgba(184,150,95,0.95), rgba(212,188,123,1)); }
+        .contact-btn i { font-size: 1.5rem; color: #fff; }
+        .contact-btn:active { transform: scale(0.95); }
+        @media (hover: hover) {
+            .contact-btn:hover { transform: translateY(-2px) scale(1.05); box-shadow: var(--shadow-lg); }
+        }
+
+        .fresha-button {
+            position: fixed;
+            bottom: 1.5rem;
+            bottom: max(1.5rem, env(safe-area-inset-bottom) + 0.5rem);
+            left: 1.5rem; z-index: 1500;
+            opacity: 0; transform: translateX(-100px);
+            transition: all var(--transition-base);
+        }
+        .fresha-button.visible { opacity: 1; transform: translateX(0); }
+
         .sticky-book {
             position: fixed; bottom: 1.5rem; left: 50%;
             transform: translateX(-50%) translateY(100px); opacity: 0;
             z-index: 1500; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .sticky-book.visible { transform: translateX(-50%) translateY(0); opacity: 1; }
-        .sticky-book a {
+        .sticky-book a, .fresha-button a {
             display: inline-flex; align-items: center; gap: 0.6rem;
             background: linear-gradient(135deg, var(--gold), var(--light-gold));
             color: var(--deep-brown); padding: 0.75rem 1.75rem; border-radius: 50px;
@@ -442,6 +477,13 @@
         </header>
 
         <div class="page-wrap">
+
+            <!-- ─── A NOTE FROM THOMAS ────────────────────────────────────── -->
+            <div class="reiki-context">
+                <p class="reiki-context-label">A note from Thomas</p>
+                <p>Facials are a more recent addition here. I trained at the award-winning Manchester Nail and Beauty Academy to bring this into my practice, and skincare has genuinely become a passion of mine. I love the difference the right consultation and the right products can make to how someone&rsquo;s skin looks and feels.</p>
+                <p>Every facial here starts with a proper look at your skin on the day, so whether you&rsquo;re dealing with dryness, sensitivity, or just want an hour to properly switch off, the treatment is shaped around you.</p>
+            </div>
 
                         <!-- ─── BESPOKE FACIALS ───────────────────────────────────────── -->
             <div class="section-heading">
@@ -536,7 +578,7 @@
 
                         <!-- Sienna X product photo -->
                         <div style="margin: 1rem 0; border-radius: var(--border-radius); overflow: hidden; border: 1px solid rgba(184,150,95,0.12);">
-                            <img src="/images/sienna-x-products.jpg" alt="Sienna X professional skincare products used in The Luxury facial" style="width:100%; height:auto; display:block;" onerror="this.parentElement.style.display='none';">
+                            <img src="sienna-x-products.jpg" alt="Sienna X professional skincare products used in The Luxury facial" style="width:100%; height:auto; display:block;" onerror="this.parentElement.style.display='none';">
                         </div>
                         <div class="card-includes">
                             <span class="include-tag">Double cleanse</span>
@@ -594,7 +636,7 @@
 
                         <!-- Infrared Flex device photo -->
                         <div style="margin: 1.25rem 0; border-radius: var(--border-radius); overflow: hidden; border: 1px solid rgba(184,150,95,0.15);">
-                            <img src="/images/infrared-flex-device.jpg" alt="Infrared Flex light therapy device used at The Reiki Space, Buxton" style="width:100%; height:auto; display:block;" onerror="this.parentElement.style.display='none';">
+                            <img src="infrared-flex-device.jpg" alt="Infrared Flex light therapy device used at The Reiki Space, Buxton" style="width:100%; height:auto; display:block;" onerror="this.parentElement.style.display='none';">
                         </div>
 
                         <p style="font-size:0.88rem; color:#6A6A6A; line-height:1.7; margin-top:1rem;">The device uses wavelengths that have been widely studied in LED phototherapy research. It is non-invasive, drug-free, and covered under our Balens insurance policy. Please let me know if you are pregnant, have a photosensitive skin condition, or are taking any photosensitising medication including isotretinoin (Roaccutane).</p>
@@ -740,20 +782,32 @@
         <p style="font-size:0.8rem; color:#6A6A6A; margin-top:1rem; font-family:'Montserrat',sans-serif;">&copy; 2026 The Reiki Space &nbsp;·&nbsp; UK Reiki Federation Member &nbsp;·&nbsp; Fully Insured</p>
     </footer>
 
-    <div class="sticky-book" id="stickyBook">
-        <a href="https://www.fresha.com/p/thomas-martin-6497268" target="_blank" rel="noopener">
+    <div class="fresha-button" id="freshaButton">
+        <a href="https://www.fresha.com/p/thomas-martin-6497268" target="_blank" rel="noopener" aria-label="Book on Fresha">
             <i class="fas fa-calendar-check"></i> Book Now
+        </a>
+    </div>
+
+    <div class="sticky-contacts" id="stickyContacts">
+        <a href="https://wa.me/447493116637" class="contact-btn whatsapp" aria-label="Message on WhatsApp" target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="mailto:thereikispacebuxton@gmail.com" class="contact-btn email" aria-label="Send an Email">
+            <i class="fas fa-envelope"></i>
         </a>
     </div>
 
     <script>
         const prog = document.getElementById('scrollProgress');
-        const sticky = document.getElementById('stickyBook');
+        const freshaButton = document.getElementById('freshaButton');
+        const stickyContacts = document.getElementById('stickyContacts');
         window.addEventListener('scroll', function() {
             const scrolled = window.pageYOffset;
             const total = document.documentElement.scrollHeight - window.innerHeight;
             prog.style.width = (scrolled / total * 100) + '%';
-            sticky.classList.toggle('visible', scrolled > 400);
+            const show = scrolled > 400;
+            freshaButton.classList.toggle('visible', show);
+            stickyContacts.classList.toggle('visible', show);
         }, { passive: true });
 
         function toggleCard(id) {
