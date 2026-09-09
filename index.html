@@ -3185,6 +3185,9 @@
                             <label for="dist_email">Email Address</label>
                             <input type="email" id="dist_email" name="email" autocomplete="email" required>
                             <p class="form-help">Your information is kept private and only used to respond to your enquiry.</p>
+                            <label for="dist_phone">Phone Number</label>
+                            <input type="tel" id="dist_phone" name="phone" autocomplete="tel" required placeholder="Including country code if outside the UK">
+                            <p class="form-help">So I can reach you if we have any trouble connecting.</p>
                         </div>
 
                         <div class="form-group">
@@ -3210,8 +3213,6 @@
                             <input type="hidden" id="form_platform" name="preferred_platform" value="">
                             <p id="platformNote" style="font-family:'Cormorant',serif; font-size:var(--font-size-base); color:#6B5B4E; margin:var(--space-sm) 0 var(--space-lg); line-height:1.7; display:none;"></p>
 
-                            <label for="dist_phone">Phone Number (optional)</label>
-                            <input type="tel" id="dist_phone" name="phone" autocomplete="tel" placeholder="" style="margin-bottom:var(--space-lg);">
                             <label for="dist_message">Anything you would like me to know? (optional)</label>
                             <textarea id="dist_message" name="message" rows="4" placeholder="Feel free to share anything that would help me prepare for your session, or simply say hello."></textarea>
                         </div>
@@ -4551,41 +4552,18 @@
 
     // ── PHONE FIELD REQUIREMENT ───────────────────────────────────────────────────
     function updatePhoneRequirement(platform) {
-        var phoneInput = document.getElementById('dist_phone');
-        var phoneLabel = document.querySelector('label[for="dist_phone"]');
-        if (!phoneInput) return;
         var note = document.getElementById('platformNote');
-
+        if (!note) return;
+        var text = '';
         if (platform === 'Phone call') {
-            phoneInput.required = true;
-            phoneInput.placeholder = 'The number I should ring';
-            if (phoneLabel) phoneLabel.textContent = 'Phone Number (required)';
-            if (note) {
-                note.textContent = 'I will ring you on this number at your appointment time.';
-                note.style.display = 'block';
-            }
+            text = 'I will ring you on the number above at your appointment time.';
         } else if (platform === 'WhatsApp') {
-            phoneInput.required = true;
-            phoneInput.placeholder = 'Your WhatsApp number, including country code';
-            if (phoneLabel) phoneLabel.textContent = 'WhatsApp Number (required)';
-            if (note) {
-                note.textContent = 'I will message you on WhatsApp shortly before your session, and we can use video or voice, whichever you prefer on the day.';
-                note.style.display = 'block';
-            }
+            text = 'I will message you on WhatsApp using the number above. If your WhatsApp number is different, please mention it in the box below.';
         } else if (platform === 'Google Meet') {
-            phoneInput.required = false;
-            phoneInput.placeholder = '';
-            if (phoneLabel) phoneLabel.textContent = 'Phone Number (optional)';
-            if (note) {
-                note.textContent = 'I will send you a Google Meet link once your appointment is confirmed. It opens in your browser, so there is nothing to install.';
-                note.style.display = 'block';
-            }
-        } else {
-            phoneInput.required = false;
-            phoneInput.placeholder = '';
-            if (phoneLabel) phoneLabel.textContent = 'Phone Number (optional)';
-            if (note) note.style.display = 'none';
+            text = 'I will send you a Google Meet link once your appointment is confirmed. It opens in your browser, so there is nothing to install.';
         }
+        note.textContent = text;
+        note.style.display = text ? 'block' : 'none';
     }
     // ── END PHONE FIELD REQUIREMENT ──────────────────────────────────────────────
 
