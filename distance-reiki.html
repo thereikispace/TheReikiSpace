@@ -2697,6 +2697,54 @@
         return Math.max(jan, jul) !== date.getTimezoneOffset();
     }
 
+    // Date field: no past dates, and picking a date auto-selects the matching day
+    (function() {
+        var today = new Date().toISOString().split('T')[0];
+        document.querySelectorAll('input[type="date"]').forEach(function(input) {
+            input.setAttribute('min', today);
+        });
+
+        var distDateInput = document.getElementById('dist_date');
+        if (distDateInput) {
+            distDateInput.addEventListener('change', function() {
+                var val = this.value;
+                if (val) {
+                    var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+                    // Parse date as local to avoid timezone offset shifting the day
+                    var parts = val.split('-');
+                    var d = new Date(parseInt(parts[0]), parseInt(parts[1])-1, parseInt(parts[2]));
+                    var dayName = days[d.getDay()];
+                    document.querySelectorAll('[data-group="day"]').forEach(function(el) {
+                        el.classList.remove('dist-selected');
+                    });
+                    var match = document.querySelector('[data-group="day"][data-value="' + dayName + '"]');
+                    if (match) {
+                        match.classList.add('dist-selected');
+                        var hiddenDay = document.getElementById('dist_day');
+                        if (hiddenDay) hiddenDay.value = dayName;
+                        var formDay = document.getElementById('form_day');
+                        if (formDay) formDay.value = dayName;
+                    }
+                    document.querySelectorAll('[data-group="day"]').forEach(function(el) {
+                        if (el.dataset.value !== dayName && el.dataset.value !== 'Flexible') {
+                            el.classList.add('dist-disabled');
+                            el.setAttribute('aria-disabled', 'true');
+                        } else {
+                            el.classList.remove('dist-disabled');
+                            el.removeAttribute('aria-disabled');
+                        }
+                    });
+                } else {
+                    document.querySelectorAll('[data-group="day"]').forEach(function(el) {
+                        el.classList.remove('dist-disabled');
+                        el.removeAttribute('aria-disabled');
+                    });
+                }
+                updateDistSummary();
+            });
+        }
+    })();
+
     function updateDistSummary() {
         var duration = document.getElementById('dist_duration') ? document.getElementById('dist_duration').value : '';
         var day      = document.getElementById('dist_day')      ? document.getElementById('dist_day').value      : '';
