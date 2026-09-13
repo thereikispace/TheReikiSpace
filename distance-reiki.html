@@ -92,7 +92,7 @@
         {
           "@type": "Question",
           "name": "How do I receive a distance Reiki session at home?",
-          "acceptedAnswer": { "@type": "Answer", "text": "You find somewhere quiet and comfortable to lie down or sit, and we connect at your agreed time by video call or phone. You rest while I work remotely for the length of the session, and there is time afterwards to share anything that came up." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Once you have booked a time online, find somewhere quiet and comfortable to lie down or sit. At your session time, join the video call using the link in your confirmation email, or I will ring you if you chose a phone call. You rest while I work remotely for the length of the session, and there is time afterwards to share anything that came up." }
         },
         {
           "@type": "Question",
@@ -107,12 +107,17 @@
         {
           "@type": "Question",
           "name": "Can I book distance Reiki from outside the UK?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Distance Reiki is available worldwide, and appointments can be arranged across different time zones. You are welcome to note your location and preferred times on the booking form." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Distance Reiki is available worldwide. The booking calendar shows available times in your own time zone, so you can choose a slot that suits you." }
         },
         {
           "@type": "Question",
           "name": "How much does a distance Reiki session cost?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Distance sessions start from £35 for 30 minutes, £45 for 45 minutes, and £55 for 60 minutes, the same rates as in-person sessions." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Distance sessions start from £35 for 30 minutes, £45 for 45 minutes, and £55 for 60 minutes, the same rates as in-person sessions. Payment is taken securely by card when you book." }
+        },
+        {
+          "@type": "Question",
+          "name": "What if I need to cancel or rearrange?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Please give at least 48 hours' notice and I will move your session or refund you in full. With less than 48 hours' notice, or if you miss your session, the fee is non-refundable. If I need to cancel, you will receive a full refund." }
         }
       ]
     }
@@ -2243,6 +2248,33 @@
         }
         .dr-cal.is-live { min-height: 560px; }
         .dr-cal-fallback { padding: var(--space-xl) var(--space-lg); text-align: center; }
+        .dr-wrap .dr-length-label {
+            text-align: center; font-family: 'Montserrat', sans-serif; font-weight: 600;
+            font-size: var(--font-size-sm); color: var(--deep-brown); letter-spacing: 0.05em;
+            margin-bottom: var(--space-sm);
+        }
+        .dr-length { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); margin-bottom: var(--space-lg); }
+        .dr-length-opt {
+            background: rgba(255,255,255,0.9);
+            border: 1.5px solid var(--warm-taupe, #C9B8A6);
+            border-radius: var(--border-radius);
+            padding: var(--space-md) var(--space-sm);
+            cursor: pointer; text-align: center;
+            font-family: 'Montserrat', sans-serif; color: var(--deep-brown);
+            transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+        }
+        .dr-length-opt:hover { border-color: var(--gold); }
+        .dr-length-opt[aria-pressed="true"] {
+            border-color: var(--warm-terracotta);
+            background: linear-gradient(135deg, rgba(193,123,92,0.30), rgba(193,123,92,0.20));
+            box-shadow: inset 0 0 0 1px var(--warm-terracotta), 0 4px 14px rgba(193,123,92,0.28);
+        }
+        .dr-length-time { display: block; font-weight: 600; }
+        .dr-length-price { display: block; margin-top: 0.2rem; font-size: var(--font-size-sm); color: #6B5B4E; }
+        @media (max-width: 480px) {
+            .dr-length { gap: var(--space-sm); }
+            .dr-length-opt { padding: var(--space-sm) 0.25rem; font-size: var(--font-size-sm); }
+        }
         .dr-wrap .dr-book-alt {
             text-align: center; font-family: 'Montserrat', sans-serif;
             font-size: var(--font-size-sm); color: #6B5B4E; letter-spacing: 0.03em;
@@ -2317,8 +2349,8 @@
         <section class="dr-hero">
             <h1>Distance Reiki Sessions, Available UK-Wide &amp; Worldwide</h1>
             <p class="tagline">Remote Reiki you can receive from the comfort of your own home.</p>
-            <p class="lede">Distance Reiki allows you to receive a full Reiki treatment without leaving home. Whether you are elsewhere in the UK, living overseas, recovering from illness, or simply prefer the comfort of your own surroundings, we meet at an agreed time by video call or phone, and share a session wherever you are.</p>
-            <p class="lede" style="margin-top:var(--space-lg);">Many people choose distance Reiki because it fits easily around work, family life or limited mobility, while others simply appreciate being able to relax in familiar surroundings. Wherever you are in the world, the booking form will show session times in your own time zone.</p>
+            <p class="lede">Distance Reiki allows you to receive a full Reiki treatment without leaving home. Whether you are elsewhere in the UK, living overseas, recovering from illness, or simply prefer the comfort of your own surroundings, we meet at the time you book by video call or phone, and share a session wherever you are.</p>
+            <p class="lede" style="margin-top:var(--space-lg);">Many people choose distance Reiki because it fits easily around work, family life or limited mobility, while others simply appreciate being able to relax in familiar surroundings. Wherever you are in the world, the booking calendar shows session times in your own time zone.</p>
         </section>
 
         <section class="section" style="padding-top:0;">
@@ -2371,7 +2403,7 @@
                             <span>How do I receive a distance Reiki session at home?</span>
                             <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
                         </button>
-                        <div class="faq-answer"><p>You find somewhere quiet and comfortable to lie down or sit, and we connect at your agreed time by video call or phone. You rest while I work remotely for the length of the session, and there is time afterwards to share anything that came up.</p></div>
+                        <div class="faq-answer"><p>Once you have booked a time online, find somewhere quiet and comfortable to lie down or sit. At your session time, join the video call using the link in your confirmation email, or I will ring you if you chose a phone call. You rest while I work remotely for the length of the session, and there is time afterwards to share anything that came up.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-question" aria-expanded="false">
@@ -2392,14 +2424,21 @@
                             <span>Can I book distance Reiki from outside the UK?</span>
                             <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
                         </button>
-                        <div class="faq-answer"><p>Yes. Distance Reiki is available worldwide, and appointments can be arranged across different time zones. You are welcome to note your location and preferred times on the booking form.</p></div>
+                        <div class="faq-answer"><p>Yes. Distance Reiki is available worldwide. The booking calendar shows available times in your own time zone, so you can choose a slot that suits you.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-question" aria-expanded="false">
                             <span>How much does a distance Reiki session cost?</span>
                             <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
                         </button>
-                        <div class="faq-answer"><p>Distance sessions start from &pound;35 for 30 minutes, &pound;45 for 45 minutes, and &pound;55 for 60 minutes, the same rates as in-person sessions.</p></div>
+                        <div class="faq-answer"><p>Distance sessions start from &pound;35 for 30 minutes, &pound;45 for 45 minutes, and &pound;55 for 60 minutes, the same rates as in-person sessions. Payment is taken securely by card when you book.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>What if I need to cancel or rearrange?</span>
+                            <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                        </button>
+                        <div class="faq-answer"><p>Please give at least 48 hours&rsquo; notice and I will move your session or refund you in full. With less than 48 hours&rsquo; notice, or if you miss your session, the fee is non-refundable. If I need to cancel, you will receive a full refund.</p></div>
                     </div>
                 </div>
 
@@ -2437,33 +2476,24 @@
                 <!-- DISTANCE BOOKING (Cal.com). The previous Web3Forms booking form is kept in git as tag booking-form-v1. -->
                 <div id="distanceBookingPanel" class="dr-book-panel" aria-hidden="true">
 
-                    <div class="dr-before">
-                        <h3>Before you book</h3>
-                        <p>When you choose a time, the booking form will ask a few short questions so I can prepare for your session:</p>
-                        <ul>
-                            <li>Where you&rsquo;ll be during the session (town or city, and country). Times are shown in your own time zone automatically.</li>
-                            <li>What you would like to focus on, for example emotional balance, stress relief, or a particular area of the body.</li>
-                            <li>A short health and sensitivity check, covering heart conditions, pregnancy, and any mental health context you would like me to know about.</li>
-                            <li>Your consent to receive distance Reiki.</li>
-                        </ul>
-                        <div class="dr-disclaimer">
-                            <p><strong>Please read before booking.</strong> Distance Reiki is a gentle, non-invasive complementary energy practice. It is not a substitute for medical diagnosis or treatment, or for psychiatric or psychological care, and it does not diagnose, treat or cure any condition. Please continue with any treatment advised by your doctor or healthcare professional.</p>
-                            <p>When you book, you will be asked to confirm that you have read this and that you consent to receiving Reiki remotely. Any health details you share are used only to keep your session safe, as set out in the <a href="privacy.html">privacy policy</a>.</p>
-                            <p>If you are in crisis or feel unsafe, please contact your GP or NHS 111, call Samaritans free on 116 123, or dial 999 in an emergency.</p>
-                        </div>
-                    </div>
-
                     <div class="dr-booked" id="distBookedNotice" role="status" aria-live="polite">
                         <h3>You&rsquo;re booked in</h3>
                         <p id="distBookedWhenLine" hidden>Your session: <strong id="distBookedWhen"></strong> (your local time).</p>
-                        <p>A confirmation email is on its way. Please take a moment to read the preparation notes below before your session.</p>
+                        <p>A confirmation email is on its way. If you chose a video call, it includes the link you&rsquo;ll click to join at your session time. Please take a moment to read the preparation notes below before your session.</p>
+                    </div>
+
+                    <p class="dr-length-label" id="drLengthLabel">Choose your session length</p>
+                    <div class="dr-length" role="group" aria-labelledby="drLengthLabel">
+                        <button type="button" class="dr-length-opt" data-length="30" aria-pressed="false" onclick="showCalLength('30')"><span class="dr-length-time">30 minutes</span><span class="dr-length-price">&pound;35</span></button>
+                        <button type="button" class="dr-length-opt" data-length="45" aria-pressed="false" onclick="showCalLength('45')"><span class="dr-length-time">45 minutes</span><span class="dr-length-price">&pound;45</span></button>
+                        <button type="button" class="dr-length-opt" data-length="60" aria-pressed="false" onclick="showCalLength('60')"><span class="dr-length-time">60 minutes</span><span class="dr-length-price">&pound;55</span></button>
                     </div>
 
                     <div class="dr-cal" id="calDistanceBox">
                         <div id="calDistanceEmbed"></div>
                         <div class="dr-cal-fallback" id="calDistanceFallback">
-                            <p><strong>Online booking is being set up.</strong></p>
-                            <p>In the meantime, email me at <a href="mailto:thereikispacebuxton@gmail.com">thereikispacebuxton@gmail.com</a> with a few times that suit you, and I will be in touch within 24 hours.</p>
+                            <p><strong>The booking calendar hasn&rsquo;t loaded.</strong></p>
+                            <p>Please refresh the page, or email me at <a href="mailto:thereikispacebuxton@gmail.com">thereikispacebuxton@gmail.com</a> with a few times that suit you, and I will be in touch within 24 hours.</p>
                         </div>
                     </div>
 
@@ -2473,12 +2503,14 @@
                             <li>Find somewhere quiet where you won&rsquo;t be disturbed for the length of your session, and silence your notifications.</li>
                             <li>Lie down or sit comfortably, fully clothed. A blanket nearby helps if you tend to get cold.</li>
                             <li>Have a glass of water to hand for afterwards.</li>
-                            <li>Keep your phone or device charged and nearby, ready for the way we agreed to connect.</li>
+                            <li><strong>Video call:</strong> your confirmation email includes a link to join. Click it at your session time. It opens in your web browser, so there is nothing to download.</li>
+                            <li><strong>Phone call:</strong> I will ring you at your session time on the number you gave when booking.</li>
+                            <li>Keep your phone or device charged and nearby.</li>
                             <li>If you can, allow a little quiet time afterwards rather than rushing straight back into your day.</li>
                         </ul>
                     </div>
 
-                    <p class="dr-book-alt">Prefer to book by email? Write to me at <a href="mailto:thereikispacebuxton@gmail.com">thereikispacebuxton@gmail.com</a> and we will go from there.</p>
+                    <p class="dr-book-alt">Any questions before booking? Email me at <a href="mailto:thereikispacebuxton@gmail.com">thereikispacebuxton@gmail.com</a>.</p>
                 </div>
 
                 <div class="dr-reading">
@@ -2580,29 +2612,56 @@
     </script>
     <script>
     // ── DISTANCE BOOKING (Cal.com) ─────────────────────────────────
-    // Put your Cal.com link here, e.g. 'thereikispace/distance-reiki'.
-    // Until it is changed, the panel shows an email fallback instead of the calendar.
-    var CAL_LINK = 'thomas-b6bcyt/distance-reiki-session';
-    var CAL_NAMESPACE = 'distance-reiki';
-    var calConfigured = CAL_LINK.indexOf('YOUR-') !== 0;
-    var calLoaded = false;
+    // One Cal.com event per session length (Cal.com charges one price per event).
+    var CAL_EVENTS = {
+        '30': 'thomas-b6bcyt/distance-reiki-session30minutes',
+        '45': 'thomas-b6bcyt/distance-reiki-session45minutes',
+        '60': 'thomas-b6bcyt/distance-reiki-session1hour'
+    };
+    var CAL_DEFAULT_LENGTH = '60';
+    var calLoaderReady = false;
+    var calShown = null;
+    var calLoaded = {};
 
-    function loadCalEmbed() {
-        if (calLoaded || !calConfigured) return;
-        calLoaded = true;
+    function ensureCalLoader() {
+        if (calLoaderReady) return;
+        calLoaderReady = true;
         document.getElementById('calDistanceFallback').hidden = true;
         document.getElementById('calDistanceBox').classList.add('is-live');
 
         // Official Cal.com embed loader (from @calcom/embed-snippet), unminified.
         (function (C, A, L) { var p = function (a, ar) { a.q.push(ar); }; var d = C.document; C.Cal = C.Cal || function () { var cal = C.Cal; var ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement('script')).src = A; cal.loaded = true; } if (ar[0] === L) { var api = function () { p(api, arguments); }; var namespace = ar[1]; api.q = api.q || []; if (typeof namespace === 'string') { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ['initNamespace', namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, 'https://app.cal.com/embed/embed.js', 'init');
+    }
 
-        Cal('init', CAL_NAMESPACE);
-        Cal.ns[CAL_NAMESPACE]('inline', {
-            elementOrSelector: '#calDistanceEmbed',
-            calLink: CAL_LINK,
+    function loadCalEmbed() {
+        if (!calShown) showCalLength(CAL_DEFAULT_LENGTH);
+    }
+
+    // Show the calendar for one session length. Each length gets its own embed,
+    // created the first time it is chosen and kept so switching back is instant.
+    function showCalLength(len) {
+        if (!CAL_EVENTS[len]) return;
+        ensureCalLoader();
+        calShown = len;
+        document.querySelectorAll('.dr-length-opt').forEach(function (b) {
+            b.setAttribute('aria-pressed', b.getAttribute('data-length') === len ? 'true' : 'false');
+        });
+        var host = document.getElementById('calDistanceEmbed');
+        Array.prototype.forEach.call(host.children, function (c) { c.hidden = c.id !== 'calDistanceEmbed' + len; });
+        if (calLoaded[len]) return;
+        calLoaded[len] = true;
+
+        var el = document.createElement('div');
+        el.id = 'calDistanceEmbed' + len;
+        host.appendChild(el);
+        var ns = 'distance-reiki-' + len;
+        Cal('init', ns);
+        Cal.ns[ns]('inline', {
+            elementOrSelector: '#' + el.id,
+            calLink: CAL_EVENTS[len],
             config: { layout: 'month_view', theme: 'light' }
         });
-        Cal.ns[CAL_NAMESPACE]('ui', {
+        Cal.ns[ns]('ui', {
             theme: 'light',
             hideEventTypeDetails: false,
             layout: 'month_view',
@@ -2614,7 +2673,7 @@
                 }
             }
         });
-        Cal.ns[CAL_NAMESPACE]('on', {
+        Cal.ns[ns]('on', {
             action: 'bookingSuccessfulV2',
             callback: function (e) { showBookedNotice(e && e.detail ? e.detail.data : null); }
         });
