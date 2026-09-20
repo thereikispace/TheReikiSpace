@@ -976,6 +976,36 @@
             background: rgba(255,255,255,0.88);
         }
 
+        /* Reiki in a Nutshell: gold-toned panel so the newcomer section reads
+           differently from the sage testimonials and the terracotta hello. */
+        .section.nutshell {
+            background: radial-gradient(ellipse at 50% 0%, rgba(184,150,95,0.30) 0%, rgba(184,150,95,0.14) 55%, rgba(184,150,95,0.08) 80%),
+                        linear-gradient(to bottom, rgba(184,150,95,0.20), rgba(184,150,95,0.12));
+            border-top: 1px solid rgba(184,150,95,0.30);
+            border-bottom: 1px solid rgba(184,150,95,0.30);
+        }
+        .nutshell .nutshell-rule {
+            width: 48px; height: 1px; background: var(--gold); opacity: 0.6;
+            margin: var(--space-md) auto 0;
+        }
+        .nutshell .card {
+            background: rgba(255,253,248,0.97);
+            border: 1px solid rgba(184,150,95,0.42);
+            border-top: 3px solid var(--gold);
+        }
+        /* Sized in em so this section always reads a touch larger than the
+           paragraphs around it, whatever the screen width. */
+        .nutshell .card p {
+            font-size: 1.1em;
+            line-height: 1.85;
+        }
+        .nutshell .card p.nutshell-lead {
+            font-family: 'Cormorant', serif;
+            font-size: 1.32em;
+            line-height: 1.75;
+            color: var(--deep-brown);
+        }
+
         /* SECONDARY BUTTON — sage */
         .btn-secondary {
             display: inline-flex;
@@ -2814,6 +2844,23 @@
                 }
             }
         </style>
+
+        <!-- Reiki in a Nutshell: plain-English answer near the top for newcomers, linking down to the fuller What Is Reiki section. -->
+        <section class="section nutshell" aria-labelledby="new-to-reiki-heading">
+            <div class="container-narrow">
+                <div class="section-header">
+                    <h2 id="new-to-reiki-heading">Reiki in a Nutshell</h2>
+                    <div class="nutshell-rule" aria-hidden="true"></div>
+                </div>
+                <article class="card">
+                    <p class="mb-lg nutshell-lead">Reiki is a Japanese relaxation therapy that encourages the body into deep rest. Developed in the 1920s, it&rsquo;s now used in some UK hospitals and hospices alongside conventional care.</p>
+                    <p class="mb-lg">During a session you lie down, fully clothed, on a comfortable therapy bed, with gentle music playing, and drift into a state of deep relaxation while I hold my hands lightly on or just above you. Universal life force energy flows from my hands into your body, going wherever it&rsquo;s needed. This is understood to bring the body back towards balance, the state in which it is best able to heal itself.</p>
+                    <p class="mb-lg">Most people leave feeling lighter in mind as well as body. With regular sessions, people describe greater resilience and feeling more able to meet life&rsquo;s demands from a place of calmness and equanimity.</p>
+                    <p class="mb-lg">Reiki is safe for adults, children and mothers-to-be. It&rsquo;s a gentle, non-invasive complementary therapy that works well alongside any medical treatment you may be receiving.</p>
+                    <p style="text-align:center; margin:0;"><a href="#what-is-reiki" style="color:var(--warm-terracotta);">More about how Reiki works</a></p>
+                </article>
+            </div>
+        </section>
 
         <!-- A Quick Hello — intro video (YouTube Short, no-cookie embed). Distinct warm terracotta/mauve section. No nav link by design. -->
         <section class="section" style="background: linear-gradient(135deg, rgba(193,123,92,0.14), rgba(150,100,120,0.10));" aria-label="A quick introduction from Thomas">
