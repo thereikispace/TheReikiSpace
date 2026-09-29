@@ -2359,11 +2359,44 @@
             <p class="tagline">Remote Reiki you can receive from the comfort of your own home.</p>
             <p class="lede">If you can&rsquo;t easily get to Buxton, or you&rsquo;d simply rather rest in your own space, a session can come to you. You settle somewhere comfortable at home, we have a quick chat by video call, and then you rest while I work. Many people find it easier to let go somewhere familiar.</p>
             <p class="lede" style="margin-top:var(--space-lg);">Many people choose distance Reiki because it fits easily around work, family life or limited mobility, while others simply appreciate being able to relax in familiar surroundings. Wherever you are in the world, the booking calendar shows session times in your own time zone.</p>
-            <p class="dr-hero-cta"><a href="#book" class="btn">Book a Distance Session</a></p>
         </section>
 
         <section class="section" style="padding-top:0;">
             <div class="dr-wrap">
+
+                <h2 id="book">Book your session</h2>
+
+                <!-- DISTANCE BOOKING (Cal.com). The previous Web3Forms booking form is kept in git as tag booking-form-v1. -->
+                <div id="distanceBookingPanel" class="dr-book-panel open">
+
+                    <div class="dr-booked" id="distBookedNotice" role="status" aria-live="polite">
+                        <h3>You&rsquo;re booked in</h3>
+                        <p id="distBookedWhenLine" hidden>Your session: <strong id="distBookedWhen"></strong> (your local time).</p>
+                        <p>A confirmation email is on its way, including the link you&rsquo;ll click to join at your session time. Please take a moment to read the preparation notes below before your session.</p>
+                    </div>
+
+                    <div class="dr-cal" id="calDistanceBox">
+                        <div id="calDistanceEmbed"></div>
+                        <div class="dr-cal-fallback" id="calDistanceFallback">
+                            <p><strong>The booking calendar hasn&rsquo;t loaded.</strong></p>
+                            <p>Please refresh the page, or email me at <a href="mailto:thereikispacebuxton@gmail.com">thereikispacebuxton@gmail.com</a> with a few times that suit you, and I will be in touch within 24 hours.</p>
+                        </div>
+                    </div>
+
+                    <div class="dr-prep" id="distPrepNotes">
+                        <h3>Preparing for your session</h3>
+                        <ul>
+                            <li>Find somewhere quiet where you won&rsquo;t be disturbed for the length of your session, and silence your notifications.</li>
+                            <li>Lie down or sit comfortably, fully clothed. A blanket nearby helps if you tend to get cold.</li>
+                            <li>Have a glass of water to hand for afterwards.</li>
+                            <li>Your confirmation email includes a link to join via video call. Click it at your session time. It opens in your web browser, so there is nothing to download.</li>
+                            <li>Keep your phone or device charged and nearby.</li>
+                            <li>If you can, allow a little quiet time afterwards rather than rushing straight back into your day.</li>
+                        </ul>
+                    </div>
+
+                    <p class="dr-book-alt">Any questions before booking? Email me at <a href="mailto:thereikispacebuxton@gmail.com">thereikispacebuxton@gmail.com</a>.</p>
+                </div>
 
                 <h2>What is distance Reiki?</h2>
                 <p>Distance Reiki, sometimes called remote Reiki or absent healing, is a Reiki session where practitioner and client are not in the same room. Within the Reiki tradition, energy is not considered bound by physical location, so a session given remotely is understood to work in the same way as one given hands-on or hands-off in person. Many clients find it difficult to tell the difference from being in the treatment room.</p>
@@ -2417,39 +2450,6 @@
                     <p class="testimonial-author">&mdash; Dan, Aylesbury</p>
                 </div>
 
-                <h2 id="book">Book your session</h2>
-
-                <!-- DISTANCE BOOKING (Cal.com). The previous Web3Forms booking form is kept in git as tag booking-form-v1. -->
-                <div id="distanceBookingPanel" class="dr-book-panel open">
-
-                    <div class="dr-booked" id="distBookedNotice" role="status" aria-live="polite">
-                        <h3>You&rsquo;re booked in</h3>
-                        <p id="distBookedWhenLine" hidden>Your session: <strong id="distBookedWhen"></strong> (your local time).</p>
-                        <p>A confirmation email is on its way, including the link you&rsquo;ll click to join at your session time. Please take a moment to read the preparation notes below before your session.</p>
-                    </div>
-
-                    <div class="dr-cal" id="calDistanceBox">
-                        <div id="calDistanceEmbed"></div>
-                        <div class="dr-cal-fallback" id="calDistanceFallback">
-                            <p><strong>The booking calendar hasn&rsquo;t loaded.</strong></p>
-                            <p>Please refresh the page, or email me at <a href="mailto:thereikispacebuxton@gmail.com">thereikispacebuxton@gmail.com</a> with a few times that suit you, and I will be in touch within 24 hours.</p>
-                        </div>
-                    </div>
-
-                    <div class="dr-prep" id="distPrepNotes">
-                        <h3>Preparing for your session</h3>
-                        <ul>
-                            <li>Find somewhere quiet where you won&rsquo;t be disturbed for the length of your session, and silence your notifications.</li>
-                            <li>Lie down or sit comfortably, fully clothed. A blanket nearby helps if you tend to get cold.</li>
-                            <li>Have a glass of water to hand for afterwards.</li>
-                            <li>Your confirmation email includes a link to join via video call. Click it at your session time. It opens in your web browser, so there is nothing to download.</li>
-                            <li>Keep your phone or device charged and nearby.</li>
-                            <li>If you can, allow a little quiet time afterwards rather than rushing straight back into your day.</li>
-                        </ul>
-                    </div>
-
-                    <p class="dr-book-alt">Any questions before booking? Email me at <a href="mailto:thereikispacebuxton@gmail.com">thereikispacebuxton@gmail.com</a>.</p>
-                </div>
 
                 <h2>Common questions about distance Reiki</h2>
                 <div class="faq-container">
