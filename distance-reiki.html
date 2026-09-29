@@ -2405,43 +2405,22 @@
                     </div>
                 </div>
 
-                <h2 id="book">Book a distance session</h2>
-                <p>Distance Reiki sessions last 60 minutes, the same rate as an in-person session.</p>
-                <div class="dr-pricing">
-                    <div class="dr-price">
-                        <div class="dur">60 min</div>
-                        <div class="amt">&pound;55</div>
-                    </div>
-                </div>
-
                 <h3 class="dr-reviews-title">What clients say</h3>
 
                 <div class="testimonial">
                     <p class="testimonial-text">"I had a lovely distance Reiki session with Thomas. I initially felt a little restless, but as the session progressed I became increasingly calm and relaxed, and could feel the energy moving steadily upward through my body. I really appreciate the feedback he shared afterwards. The whole experience felt gentle, grounding and insightful."</p>
-                    <p class="testimonial-author">&mdash; Cynthia, Nairobi, Kenya &middot; Distance session</p>
+                    <p class="testimonial-author">&mdash; Cynthia, Nairobi, Kenya</p>
                 </div>
 
                 <div class="testimonial">
                     <p class="testimonial-text">"There&rsquo;s something truly special about receiving energy work from someone who holds space as beautifully as Thomas does&hellip; I highly recommend Thomas as a Reiki Practitioner."</p>
-                    <p class="testimonial-author">&mdash; Dan, Aylesbury &middot; Distance session</p>
+                    <p class="testimonial-author">&mdash; Dan, Aylesbury</p>
                 </div>
 
-                <div class="testimonial">
-                    <p class="testimonial-text">"I had never felt comfortable with anyone before meeting Thomas. His knowledge and natural warmth put me at ease so that I was able to relax. For the first time in ages I had the most restful night&rsquo;s sleep, and today I feel more energised and calm than I have in many years."</p>
-                    <p class="testimonial-author">&mdash; Jo, Derbyshire &middot; In-person session</p>
-                </div>
-
-                <div class="testimonial">
-                    <p class="testimonial-text">"I found myself effortlessly guided in a non-intrusive way to a state of deep calm&hellip; Highly recommend trying."</p>
-                    <p class="testimonial-author">&mdash; Andrew, Preston &middot; In-person session</p>
-                </div>
-
-                <div class="dr-cta">
-                    <button type="button" class="btn" id="distanceToggleBtn" aria-expanded="false" aria-controls="distanceBookingPanel" onclick="toggleDistanceBooking()">Book a Distance Session</button>
-                </div>
+                <h2 id="book">Book your session</h2>
 
                 <!-- DISTANCE BOOKING (Cal.com). The previous Web3Forms booking form is kept in git as tag booking-form-v1. -->
-                <div id="distanceBookingPanel" class="dr-book-panel" aria-hidden="true">
+                <div id="distanceBookingPanel" class="dr-book-panel open">
 
                     <div class="dr-booked" id="distBookedNotice" role="status" aria-live="polite">
                         <h3>You&rsquo;re booked in</h3>
@@ -2697,43 +2676,48 @@
 
     function toggleDistanceBooking() {
         var panel = document.getElementById('distanceBookingPanel');
-        var btn = document.getElementById('distanceToggleBtn');
-        var opening = !panel.classList.contains('open');
-        panel.classList.toggle('open', opening);
-        panel.setAttribute('aria-hidden', opening ? 'false' : 'true');
-        btn.setAttribute('aria-expanded', opening ? 'true' : 'false');
-        btn.textContent = opening ? 'Close booking' : 'Book a Distance Session';
-        if (opening) {
-            loadCalEmbed();
-            scrollToBookingPanel(panel);
-        }
+        if (!panel) return;
+        loadCalEmbed();
+        scrollToBookingPanel(panel);
     }
 
-    // In-page links to #book (menu Book links, top-of-page button) open the
-    // booking panel as well as moving to it.
+    // The calendar is on show, but it is a tall, heavy embed, so only load it
+    // once it is close to the viewport. Browsers without IntersectionObserver
+    // load it straight away.
+    (function () {
+        var box = document.getElementById('calDistanceBox');
+        if (!box) return;
+        if (!('IntersectionObserver' in window)) { loadCalEmbed(); return; }
+        var io = new IntersectionObserver(function (entries) {
+            if (entries.some(function (e) { return e.isIntersecting; })) {
+                io.disconnect();
+                loadCalEmbed();
+            }
+        }, { rootMargin: '600px 0px' });
+        io.observe(box);
+    })();
+
+    // In-page links to #book (menu Book links, top-of-page button) move to the
+    // calendar and make sure it has started loading.
     document.querySelectorAll('a[href="#book"]').forEach(function (a) {
         a.addEventListener('click', function (e) {
             e.preventDefault();
-            var panel = document.getElementById('distanceBookingPanel');
-            if (!panel) return;
-            if (!panel.classList.contains('open')) toggleDistanceBooking();
-            else scrollToBookingPanel(panel);
+            toggleDistanceBooking();
             if (history.replaceState) history.replaceState(null, '', '#book');
         });
     });
 
-    // Arriving from a link with #book (e.g. the article's call to action) opens the
-    // booking panel straight away rather than landing on a collapsed section.
+    // Arriving from a link with #book (e.g. the article's call to action) lands
+    // on the calendar rather than the reviews above it.
     (function () {
         if (window.location.hash !== '#book') return;
         var panel = document.getElementById('distanceBookingPanel');
         if (!panel) return;
-        if (!panel.classList.contains('open')) toggleDistanceBooking();
+        loadCalEmbed();
 
-        // The browser also jumps to the #book heading, which now sits above the
-        // prices and reviews, and the calendar changes the page height as it
-        // loads. So settle on the calendar again afterwards, unless the visitor
-        // has started scrolling for themselves.
+        // The browser jumps to the #book heading, and the calendar changes the
+        // page height as it loads, so settle on it again afterwards, unless the
+        // visitor has started scrolling for themselves.
         var stopped = false;
         var stop = function () { stopped = true; };
         window.addEventListener('wheel', stop, { passive: true, once: true });
