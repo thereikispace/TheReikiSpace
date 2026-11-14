@@ -693,6 +693,13 @@
             }
         }
 
+        /* Crystal healing link: full name in the menu, short name in the desktop bar */
+        .nav-label-short { display: none; }
+        @media (min-width: 1250px) {
+            .nav-label-long { display: none; }
+            .nav-label-short { display: inline; }
+        }
+
         /* Roomier spacing once there is width for it */
         @media (min-width: 1400px) {
             .nav-links { gap: var(--space-xl); }
@@ -2731,7 +2738,7 @@
                 <li><a href="#what-is-reiki">Reiki</a></li>
                 <li><a href="#sessions">Sessions</a></li>
                 <li><a href="#distance">Distance Reiki</a></li>
-                <li><a href="treatments.html">Other Treatments</a></li>
+                <li><a href="treatments.html"><span class="nav-label-long">Crystal Healing &amp; Chakra Balancing</span><span class="nav-label-short">Crystal Healing</span></a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
                 <li class="nav-book-link"><a href="#book">Book</a></li>
             </ul>
@@ -3400,7 +3407,6 @@
                             <p class="mb-lg">In August of that same year, I travelled to India for the first time. I returned twice more, in 2015 and 2016, spending the most time in Rishikesh and Varanasi, with visits to Dharamsala and other sacred sites. During these travels my understanding of energy, healing, and the nature of consciousness deepened.</p>
                             <p class="mb-lg">I began my Reiki training in 2018, when Julie Hayes of <a href="https://juliehayesholisticwellness.co.uk" target="_blank" rel="noopener">juliehayesholisticwellness.co.uk</a> initiated me into the First Degree of Usui Shiki Ryoho, the Usui System of Natural Healing. Julie is a very experienced holistic teacher and a member of the <a href="https://fht.org.uk/" target="_blank" rel="noopener">Federation of Holistic Therapists</a>, and her lineage traces directly back to Mikao Usui. I spent the next eight years practising in earnest, first with friends and family, later with people who came to me by word of mouth. In 2026 I was initiated into the Second Degree. Those years are what I bring to the treatment room today, where I work with clients in person in Buxton and at a distance across the UK and worldwide. This work has changed me as much as it has anyone I've worked with, and I'm still learning.</p>
                             <p class="mb-lg">My clients have ranged from their early twenties to 90. Outside the treatment room, I volunteer as a Befriender with older people in my area, many of whom have little company. The patience and empathy that asks for is what I bring to everyone I work with.</p>
-                            <p class="mb-lg">Alongside Reiki, I also offer crystal healing and chakra balancing, in 45- and 60-minute sessions. You can <a href="treatments.html">see the full range of treatments here</a>.</p>
                             <p class="mb-lg" style="color:var(--warm-terracotta); font-weight:600;">Give yourself the gift of Reiki by working with me.</p>
                             <p>If any of this resonates, I would love to hear from you.</p>
                         </div>
@@ -3597,7 +3603,7 @@
                 <div class="footer-col-right">
                     <ul class="footer-links" style="justify-content:flex-start; margin-top:0;">
                         <li><a href="gift-vouchers.html">Gift Vouchers</a></li>
-                        <li><a href="treatments.html">Other Treatments</a></li>
+                        <li><a href="treatments.html">Crystal Healing &amp; Chakra Balancing</a></li>
                         <li><a href="privacy.html">Privacy Policy</a></li>
                         <li><a href="disclaimer.html">Disclaimer</a></li>
                         <li><a href="accessibility.html">Accessibility</a></li>
