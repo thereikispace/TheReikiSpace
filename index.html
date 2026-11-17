@@ -3485,7 +3485,7 @@
             <div class="container-narrow">
                 <div class="section-header">
                     <h2>Book a Session</h2>
-                    <p>Every enquiry is answered personally, usually within 24 hours.</p>
+                    <p>Every enquiry is answered personally, usually within the hour.</p>
                 </div>
 
                 <div style="text-align:center; margin-bottom:var(--space-xl);">
@@ -3586,7 +3586,7 @@
                         <textarea id="message" name="message" rows="5" placeholder="Feel free to share anything that would help me prepare for your session, or simply say hello."></textarea>
                     </div>
                     <button type="submit" class="btn">Send My Enquiry</button>
-                    <p style="text-align: center; font-size: var(--font-size-base); margin-top: var(--space-md); color: var(--deep-brown); font-family: 'Montserrat', sans-serif; letter-spacing: 0.04em;">I respond to all enquiries within 24 hours.</p>
+                    <p style="text-align: center; font-size: var(--font-size-base); margin-top: var(--space-md); color: var(--deep-brown); font-family: 'Montserrat', sans-serif; letter-spacing: 0.04em;">I respond to all enquiries personally, usually within the hour.</p>
                 </form>
                 <div class="trust-signal mt-xl">
                     <p><strong>Data Protection:</strong> Your personal information will only be used to respond to your enquiry. Your details will not be shared with third parties.</p>
@@ -3833,7 +3833,7 @@
                         .then(res => res.json())
                         .then(function(result) {
                             if (result.success) {
-                                form.innerHTML = '<div style="text-align:center;padding:var(--space-2xl) var(--space-lg)"><div style="font-size:2.5rem;margin-bottom:var(--space-lg)">&#10022;</div><h3 style="font-family:\'Cinzel\',serif;color:var(--warm-terracotta);margin-bottom:var(--space-md);font-size:clamp(1.2rem,3vw,1.5rem);letter-spacing:0.06em">Thank You</h3><p style="font-size:var(--font-size-lg);line-height:1.8;color:var(--text-on-cream);max-width:480px;margin:0 auto">Your message has been received. Thomas will be in touch within 24 hours.</p><p style="margin-top:var(--space-lg);font-style:italic;color:#6B5B4E;font-size:var(--font-size-sm)">In the meantime, feel free to explore the Reiki section to learn more about what to expect.</p></div>';
+                                form.innerHTML = '<div style="text-align:center;padding:var(--space-2xl) var(--space-lg)"><div style="font-size:2.5rem;margin-bottom:var(--space-lg)">&#10022;</div><h3 style="font-family:\'Cinzel\',serif;color:var(--warm-terracotta);margin-bottom:var(--space-md);font-size:clamp(1.2rem,3vw,1.5rem);letter-spacing:0.06em">Thank You</h3><p style="font-size:var(--font-size-lg);line-height:1.8;color:var(--text-on-cream);max-width:480px;margin:0 auto">Your message has been received. Thomas will be in touch shortly, usually within the hour.</p><p style="margin-top:var(--space-lg);font-style:italic;color:#6B5B4E;font-size:var(--font-size-sm)">In the meantime, feel free to explore the Reiki section to learn more about what to expect.</p></div>';
                             } else {
                                 btn.textContent = originalText;
                                 btn.disabled = false;
