@@ -2856,8 +2856,7 @@
         </style>
 
         <!-- Reiki in a Nutshell: plain-English answer near the top for newcomers, linking down to the fuller What Is Reiki section. -->
-        <!-- HIDDEN for now (Thomas, 2026-09-27): to show this section again, delete the hidden and style attributes below. -->
-        <section class="section nutshell" hidden style="display:none;" aria-labelledby="new-to-reiki-heading">
+        <section class="section nutshell" aria-labelledby="new-to-reiki-heading">
             <div class="container-narrow">
                 <div class="section-header">
                     <h2 id="new-to-reiki-heading">Reiki in a Nutshell</h2>
@@ -3256,6 +3255,7 @@
                     <p>Reiki is a Japanese energy healing practice developed by Mikao Usui in the early 20th century. The name combines two Japanese concepts: "Rei" (universal) and "Ki" (life force energy), representing the fundamental energy that flows through all living beings. In practice, a session involves light touch or hands held just above the body, working with the body's own capacity to rest, rebalance, and recover.</p>
                     <p><strong style="color: var(--warm-terracotta);">Reiki is now offered in NHS hospitals, including University College London Hospitals and Guy's and St Thomas'. Cancer Research UK and Macmillan both recognise it as a supportive therapy, used in UK cancer centres and hospices.</strong></p>
                 </article>
+                <div id="originsMoreContent" style="display:none;">
                 <div class="usui-tribute">
                     <h3 style="color: var(--warm-terracotta); margin-bottom: var(--space-sm); text-align: center; font-size: var(--font-size-2xl);">The Founder of Reiki: Dr. Mikao Usui</h3>
                     <img src="Mikaousui.jpg" alt="Dr. Mikao Usui (1865–1926), founder of Reiki — photograph" class="usui-portrait" loading="lazy" width="300" height="400">
@@ -3269,6 +3269,18 @@
                     <p>During a session, I work gently across specific points of the body, hands placed lightly on or just above the surface, guiding universal life energy to where it is needed most. In the Usui tradition this is known as reiji-ho, and involves allowing the energy itself to guide the placement of the hands, rather than relying on a fixed sequence or conscious direction. The process supports the body's natural relaxation response and helps restore a sense of balance and ease.</p>
                     <p>Reiki can be given in person or at a distance, so where you live doesn't matter. Nothing is pressed, pulled or manipulated. It's safe at any age, and it works for animals too.</p>
                 </article>
+                </div>
+
+                <div style="text-align:center; margin-bottom:var(--space-xl);">
+                    <button
+                        id="originsReadMoreBtn"
+                        onclick="(function(){var c=document.getElementById('originsMoreContent');var b=document.getElementById('originsReadMoreBtn');var expanded=c.style.display!=='none';c.style.display=expanded?'none':'block';b.setAttribute('aria-expanded',expanded?'false':'true');b.innerHTML=expanded?'Where Reiki comes from, and how it works <span aria-hidden=&quot;true&quot; class=&quot;about-btn-icon&quot;>&#8964;</span>':'Read less <span aria-hidden=&quot;true&quot; class=&quot;about-btn-icon&quot;>&#8963;</span>';if(!expanded){setTimeout(function(){c.scrollIntoView({behavior:'smooth',block:'start'});},50);}})()"
+                        aria-expanded="false"
+                        aria-controls="originsMoreContent"
+                        class="about-read-more-btn">
+                        Where Reiki comes from, and how it works <span aria-hidden="true" class="about-btn-icon">&#8964;</span>
+                    </button>
+                </div>
 
                 <div class="testimonial">
                     <p class="testimonial-text">"I thought the issues would return with time, but after a year all is well."</p>
