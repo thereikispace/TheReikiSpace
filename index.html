@@ -763,8 +763,10 @@
             .hero {
                 justify-content: flex-start;
                 min-height: auto;
+                padding-bottom: max(var(--space-xl), env(safe-area-inset-bottom));
             }
-        }
+            /* The blank spacer line between heading and button is only wanted on wider screens */
+            .hero-content p[aria-hidden="true"] { display: none; }        }
 
         @media (min-width: 900px) {
             .hero::before {
