@@ -2280,9 +2280,20 @@
         .fresha-btn span {
             position: relative;
             z-index: 1;
-            display: none;
         }
-        
+
+        /* Phones: keep the "Book Now" label but make the pill compact */
+        @media (max-width: 499px) {
+            .fresha-btn {
+                gap: 0.4rem;
+                padding: 0 0.9rem;
+                min-height: 44px;
+                font-size: 0.7rem;
+                letter-spacing: 0.1em;
+            }
+            .fresha-btn i { font-size: 1rem; }
+        }
+
         @media (min-width: 500px) {
             .fresha-btn {
                 gap: 0.75rem;
@@ -2771,10 +2782,121 @@
     
     <main id="main-content"><!-- Hero -->
         <section id="hero" class="hero">
+            <!-- FESTIVE (temporary, Christmas 2026): snowfall, gift-ribbon button and Advent of Calm card.
+                 Everything festive switches itself off after 6 January 2027 (see FESTIVE_END below); the hero
+                 button then goes back to "Book Your Session". To remove for good, delete every block marked FESTIVE.
+                 Preview another date by adding ?festive-date=2026-12-21 to the page address. -->
+            <script>
+                (function () {
+                    var FESTIVE_START = new Date(2026, 10, 20); // 20 Nov 2026
+                    var FESTIVE_END = new Date(2027, 0, 7);     // off from 7 Jan 2027
+                    var now = new Date();
+                    var m = /[?&]festive-date=(\d{4})-(\d{2})-(\d{2})/.exec(location.search);
+                    if (m) now = new Date(+m[1], m[2] - 1, +m[3]);
+                    window.festiveNow = now;
+                    if (now >= FESTIVE_START && now < FESTIVE_END) document.documentElement.classList.add('festive');
+                })();
+            </script>
+            <style>
+                .festive-snow, .festive-ribbon, .advent-calm, .festive-holly { display: none; }
+                html.festive .festive-holly { display: block; margin: 0 0 var(--space-sm); line-height: 0; }
+                .festive-holly svg { display: inline-block; filter: drop-shadow(0 2px 3px rgba(44,24,16,0.35)); }
+                html.festive .festive-gold { color: var(--light-gold); -webkit-text-fill-color: var(--light-gold); }
+                html.festive .festive-snow { display: block; }
+                html.festive.advent-on .advent-calm { display: block; }
+
+                /* Gift ribbon and bow on the hero button */
+                html.festive .hero-cta.festive-gift { padding-right: calc(var(--space-xl) + 26px); }
+                html.festive .festive-ribbon {
+                    display: block; position: absolute; top: 0; bottom: 0; right: 24px; width: 9px;
+                    background: linear-gradient(90deg, #A85F42, var(--warm-terracotta) 35%, #D99A7E 55%, var(--warm-terracotta) 75%, #A85F42);
+                    box-shadow: 0 0 0 1px rgba(248,246,240,0.35);
+                    pointer-events: none;
+                }
+                .festive-ribbon svg { position: absolute; left: 50%; top: 50%; width: 30px; height: 20px; transform: translate(-50%, -50%); filter: drop-shadow(0 1px 1px rgba(44,24,16,0.3)); }
+
+                /* Advent of Calm card */
+                .advent-calm { padding: var(--space-2xl) var(--space-lg) 0; }
+                .advent-calm-card {
+                    max-width: 560px; margin: 0 auto; text-align: center;
+                    background: linear-gradient(160deg, rgba(248,246,240,0.95), rgba(232,221,209,0.9));
+                    border: 1px solid rgba(184,150,95,0.45); border-radius: var(--border-radius);
+                    padding: var(--space-xl) var(--space-lg); box-shadow: var(--shadow-sm); position: relative;
+                }
+                .advent-calm-card::before {
+                    content: '\2726'; display: block; color: var(--gold); font-size: 1.2rem; line-height: 1; margin-bottom: var(--space-sm);
+                }
+                .advent-calm-eyebrow { font-family: 'Montserrat', sans-serif; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--warm-terracotta); margin: 0 0 var(--space-xs); }
+                .advent-calm-title { font-family: 'Cinzel', serif; font-size: clamp(1.2rem, 3.5vw, 1.5rem); font-weight: 400; color: var(--deep-brown); letter-spacing: 0.05em; margin: 0 0 var(--space-md); }
+                .advent-calm-tip { font-family: 'Cormorant', serif; font-style: italic; font-size: clamp(1.15rem, 3vw, 1.35rem); line-height: 1.7; color: var(--deep-brown); margin: 0 auto var(--space-lg); max-width: 440px; }
+                .advent-calm-link { font-family: 'Montserrat', sans-serif; font-size: 0.78rem; letter-spacing: 0.06em; color: var(--link-colour); }
+                .advent-calm-link:hover { color: var(--link-hover); }
+
+                .festive-snow { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+                .festive-snow span {
+                    position: absolute; top: -12px; left: var(--x);
+                    width: calc(var(--s) * 1.7); height: calc(var(--s) * 1.7); border-radius: 50%;
+                    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(248,246,240,0.6) 45%, transparent 72%);
+                    opacity: 0;
+                    animation: festiveFall var(--d) linear var(--delay) infinite;
+                }
+                .festive-snow span:nth-child(3n) { background: radial-gradient(circle, rgba(230,208,150,1) 0%, rgba(212,188,123,0.6) 45%, transparent 72%); }
+                @keyframes festiveFall {
+                    0%   { transform: translate(0, 0); opacity: 0; }
+                    10%  { opacity: 0.95; }
+                    50%  { transform: translate(18px, 50vh); }
+                    90%  { opacity: 0.6; }
+                    100% { transform: translate(-8px, 105vh); opacity: 0; }
+                }
+                @media (prefers-reduced-motion: reduce) { html.festive .festive-snow { display: none; } }
+            </style>
+            <div class="festive-snow" aria-hidden="true">
+                <span style="--x:4%;  --s:6px;  --d:16s; --delay:-2s"></span>
+                <span style="--x:11%; --s:4px;  --d:21s; --delay:-9s"></span>
+                <span style="--x:18%; --s:8px;  --d:18s; --delay:-14s"></span>
+                <span style="--x:26%; --s:5px;  --d:24s; --delay:-5s"></span>
+                <span style="--x:33%; --s:7px;  --d:17s; --delay:-11s"></span>
+                <span style="--x:41%; --s:4px;  --d:22s; --delay:-1s"></span>
+                <span style="--x:48%; --s:6px;  --d:19s; --delay:-16s"></span>
+                <span style="--x:56%; --s:9px;  --d:25s; --delay:-7s"></span>
+                <span style="--x:63%; --s:5px;  --d:16s; --delay:-12s"></span>
+                <span style="--x:70%; --s:7px;  --d:20s; --delay:-3s"></span>
+                <span style="--x:77%; --s:4px;  --d:23s; --delay:-18s"></span>
+                <span style="--x:84%; --s:8px;  --d:18s; --delay:-6s"></span>
+                <span style="--x:91%; --s:5px;  --d:21s; --delay:-13s"></span>
+                <span style="--x:97%; --s:6px;  --d:17s; --delay:-8s"></span>
+            </div>
+            <!-- END FESTIVE -->
             <div class="hero-content">
-                <h1>Feel Calmer, Sleep Better, Find Your Footing Again<span class="visually-hidden"> — Reiki in Buxton, Derbyshire</span></h1>
+                <!-- FESTIVE: holly sprig above the heading -->
+                <div class="festive-holly" aria-hidden="true"><svg viewBox="0 0 64 34" width="64" height="34">
+                    <g stroke="rgba(248,246,240,0.45)" stroke-width="0.8" stroke-linejoin="round">
+                        <path fill="#3F7449" d="M31 20 Q27 13 21 14 L19 9 L16 14 Q11 12 7 13 L9 17 L4 20 L9 22 Q11 27 16 25 L18 30 L21 25 Q27 27 31 20 Z"/>
+                        <path fill="#356640" d="M33 20 Q37 13 43 14 L45 9 L48 14 Q53 12 57 13 L55 17 L60 20 L55 22 Q53 27 48 25 L46 30 L43 25 Q37 27 33 20 Z"/>
+                    </g>
+                    <path d="M30 20 L9 19 M34 20 L55 19" stroke="rgba(248,246,240,0.35)" stroke-width="0.7" fill="none"/>
+                    <g stroke="rgba(248,246,240,0.5)" stroke-width="0.6">
+                        <circle cx="28.5" cy="19.5" r="3.6" fill="#B23A32"/>
+                        <circle cx="35.5" cy="19.5" r="3.6" fill="#A8322D"/>
+                        <circle cx="32" cy="14.5" r="3.6" fill="#BF4237"/>
+                    </g>
+                    <circle cx="31" cy="13.4" r="1" fill="rgba(255,255,255,0.7)"/>
+                    <circle cx="27.5" cy="18.4" r="0.9" fill="rgba(255,255,255,0.6)"/>
+                    <circle cx="34.5" cy="18.4" r="0.9" fill="rgba(255,255,255,0.6)"/>
+                </svg></div>
+                <h1 id="heroHeading">Give the Gift of <span class="festive-gold">Calm</span> This Christmas<span class="visually-hidden"> — Reiki in Buxton, Derbyshire</span></h1>
                 <p aria-hidden="true" style="animation:none; text-shadow:none;">&nbsp;</p>
-                <a href="https://www.fresha.com/p/thomas-martin-6497268" class="hero-cta" target="_blank" rel="noopener">Book Your Session</a>
+                <a href="gift-vouchers.html" class="hero-cta festive-gift" id="heroCta"><span class="festive-ribbon" aria-hidden="true"><svg viewBox="0 0 30 20"><path d="M15 10 C10 2, 2 1, 3 6 C4 11, 11 11, 15 10 Z" fill="#C17B5C" stroke="#F8F6F0" stroke-opacity="0.5" stroke-width="0.8"/><path d="M15 10 C20 2, 28 1, 27 6 C26 11, 19 11, 15 10 Z" fill="#C17B5C" stroke="#F8F6F0" stroke-opacity="0.5" stroke-width="0.8"/><path d="M14 10 L9 19 M16 10 L21 19" stroke="#A85F42" stroke-width="2.2" stroke-linecap="round"/><circle cx="15" cy="10" r="3" fill="#A85F42" stroke="#F8F6F0" stroke-opacity="0.6" stroke-width="0.8"/></svg></span>Purchase a Gift Voucher</a><!-- FESTIVE: after the festive dates, put the usual heading and booking button back -->
+                <script>
+                    if (!document.documentElement.classList.contains('festive')) {
+                        document.getElementById('heroHeading').innerHTML = 'Feel Calmer, Sleep Better, Find Your Footing Again<span class="visually-hidden"> — Reiki in Buxton, Derbyshire</span>';
+                        var heroCta = document.getElementById('heroCta');
+                        heroCta.textContent = 'Book Your Session';
+                        heroCta.href = 'https://www.fresha.com/p/thomas-martin-6497268';
+                        heroCta.target = '_blank';
+                        heroCta.rel = 'noopener';
+                    }
+                </script><!-- END FESTIVE -->
                 <p style="font-family:'Montserrat',sans-serif; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--cream); opacity:0.82; margin:var(--space-md) 0 0; text-shadow:0 2px 4px rgba(44,24,16,0.35); animation:none;">Evening and weekend appointments available</p>
                 <div style="margin-top: var(--space-2xl); padding-top: var(--space-md); border-top: 1px solid rgba(184,150,95,0.35);"><p style="font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.95; color: var(--cream);">Stress &nbsp;·&nbsp; Burnout &nbsp;·&nbsp; Anxiety &nbsp;·&nbsp; Grief &nbsp;·&nbsp; Perimenopause &nbsp;·&nbsp; Life transitions</p></div>
                 
@@ -2866,6 +2988,61 @@
                 }
             }
         </style>
+
+        <!-- FESTIVE: Advent of Calm. A different Reiki fact each day, 1-24 December; shows only during the festive dates. -->
+        <section class="advent-calm" aria-labelledby="advent-calm-title">
+            <div class="advent-calm-card">
+                <p class="advent-calm-eyebrow" id="adventCalmEyebrow"></p>
+                <h2 class="advent-calm-title" id="advent-calm-title">Advent of Calm</h2>
+                <p class="advent-calm-tip" id="adventCalmTip"></p>
+                <a class="advent-calm-link" href="gift-vouchers.html">Give someone an hour of calm this Christmas &rarr;</a>
+            </div>
+        </section>
+        <script>
+            (function () {
+                if (!document.documentElement.classList.contains('festive')) return;
+                var tips = [
+                    "The word Reiki is made of two Japanese characters: rei, often translated as “universal” or “spiritual”, and ki, meaning life energy, the same idea as qi in Chinese practices.",
+                    "In April 1922 Mikao Usui opened his first Reiki society and clinic in Harajuku, Tokyo. That society, the Usui Reiki Ryoho Gakkai, still exists in Japan today.",
+                    "One of Reiki’s quietest benefits is simply the hour itself: no phone, no to-do list, nothing asked of you. For many people it’s the only time in the week they truly switch off.",
+                    "Reiki has five principles, and each begins “Just for today”. The first: “Just for today, do not anger.” It isn’t about bottling things up, but noticing anger rise and letting it pass through.",
+                    "After the Great Kantō earthquake struck Tokyo in 1923, Usui and his students are said to have offered Reiki to many of the injured and displaced, and his reputation grew as a result.",
+                    "You don’t need to be struggling to benefit from Reiki. Many people book it the way they might book a massage: as regular maintenance, to stay steady rather than to recover.",
+                    "Chujiro Hayashi, a former naval officer and one of Usui’s students, ran a Reiki clinic in Tokyo where clients were often treated by several practitioners at once.",
+                    "Try a Japanese Reiki technique called kenyoku, or “dry bathing”: sweep one hand diagonally down across your chest, then along each arm. It’s used to clear and close a practice.",
+                    "The second Reiki principle: “Just for today, do not worry.” Worry lives in tomorrow. Bringing your attention back to this one day is often enough to loosen its grip.",
+                    "Hawayo Takata came to Hayashi’s Tokyo clinic from Hawaii in 1935 as a client, went on to train with him, and brought Reiki to the West. By 1980 she had trained 22 Reiki Masters.",
+                    "Reiki isn’t a religion. There’s no dogma or worship involved, and it’s received by people of every faith and none.",
+                    "Reiki is traditionally taught in three levels: First Degree focuses on treating yourself, Second Degree on treating others (including at a distance), and Master level on teaching.",
+                    "Some people find Reiki a helpful companion to counselling or talking therapy. One works through words, the other through stillness, and the two can sit comfortably side by side.",
+                    "Another of Reiki’s five principles: “Just for today, do your work honestly.” Many read it as being true to yourself as well as to others, whatever your work happens to be.",
+                    "Self-treatment is at the heart of Reiki practice. Practitioners are taught to give Reiki to themselves every day, long before they work with anyone else.",
+                    "Try joshin kokyū-hō, a Japanese Reiki breathing practice: breathe in through your nose, drawing the breath down to just below your navel, then breathe out slowly through your mouth.",
+                    "In the UK, Reiki practitioners can join a register run by the Complementary and Natural Healthcare Council, which is accredited by the Professional Standards Authority.",
+                    "A Reiki session gives your mind something it rarely gets: nothing to do. Many people say their clearest thinking arrives in the quiet days that follow.",
+                    "Another of Reiki’s five principles: “Just for today, be kind to every living thing.” Including, at this busy time of year, yourself.",
+                    "Usui died in 1926. The following year his students raised a memorial stone at Saihō-ji temple in Tokyo, and its inscription remains one of the best records of his life.",
+                    "The winter solstice, the longest night of the year. Reiki is, above all, a practice of deep rest, which makes tonight a good night for an early one.",
+                    "In Japan, Reiki faded from public view after the Second World War. Much of today’s Japanese interest was rekindled from the 1980s by Reiki returning from the West.",
+                    "Many people find the effects of Reiki build over time: each session, the body seems to remember the way into deep rest a little more quickly.",
+                    "Christmas Eve, and the last of Reiki’s five principles this month: “Just for today, be grateful.” Whatever today brings, may it hold at least one quiet moment that’s just for you."
+                ];
+                var now = window.festiveNow || new Date();
+                var eyebrow = document.getElementById('adventCalmEyebrow');
+                var tip = document.getElementById('adventCalmTip');
+                // The card stays hidden until 1 December.
+                if (now.getMonth() === 11 && now.getDate() <= 24) {
+                    eyebrow.textContent = 'Day ' + now.getDate() + ' of 24';
+                    tip.textContent = tips[now.getDate() - 1];
+                    document.documentElement.classList.add('advent-on');
+                } else if (now.getMonth() === 11 || now.getMonth() === 0) {
+                    eyebrow.textContent = 'Season’s greetings';
+                    tip.textContent = 'Wishing you a peaceful Christmas and a gentle start to the new year. Rest isn’t something you have to earn.';
+                    document.documentElement.classList.add('advent-on');
+                }
+            })();
+        </script>
+        <!-- END FESTIVE -->
 
         <!-- Reiki in a Nutshell: plain-English answer near the top for newcomers, linking down to the fuller What Is Reiki section. -->
         <section class="section nutshell" aria-labelledby="new-to-reiki-heading">
@@ -3676,9 +3853,13 @@
                 sectionObserver.observe(section);
             });
             
-            // Hero content fade on scroll
+            // Hero content fade on scroll (the hero button stays fully visible)
             const heroContent = document.querySelector('.hero-content');
             if (heroContent) {
+                const heroFaders = Array.prototype.filter.call(heroContent.children, function(el) {
+                    return !el.classList.contains('hero-cta') && el.tagName !== 'SCRIPT';
+                });
+                heroFaders.forEach(function(el) { el.dataset.baseOpacity = parseFloat(el.style.opacity) || 1; });
                 let heroTicking = false;
                 window.addEventListener('scroll', function() {
                     if (heroTicking) return;
@@ -3686,7 +3867,7 @@
                     window.requestAnimationFrame(function() {
                         const scrolled = window.pageYOffset;
                         const opacity = 1 - (scrolled / 600);
-                        heroContent.style.opacity = opacity >= 0 ? opacity : 0;
+                        heroFaders.forEach(function(el) { el.style.opacity = (opacity >= 0 ? opacity : 0) * el.dataset.baseOpacity; });
                         heroTicking = false;
                     });
                 }, { passive: true });
